@@ -1,0 +1,42 @@
+---
+// Scent-haze overlay for the hero. Composites over the existing hero photo.
+---
+<div class="hero-haze-layer" aria-hidden="true">
+  <canvas data-haze class="hero-haze-canvas"></canvas>
+  <video data-haze-video class="hero-haze-video" src="/video/hero.mp4" muted loop playsinline preload="none" hidden></video>
+</div>
+
+<script>
+  import { detectTier } from '../lib/capability';
+  let destroy: null | (() => void) = null;
+
+  async function mount() {
+    const canvas = document.querySelector<HTMLCanvasElement>('[data-haze]');
+    const video = document.querySelector<HTMLVideoElement>('[data-haze-video]');
+    if (!canvas) return; // hero not on this page
+    const tier = detectTier();
+    if (tier === 'full') {
+      const { mountHaze } = await import('../lib/gl/haze');
+      destroy = mountHaze(canvas);
+    } else if (tier === 'mobile' && video) {
+      canvas.remove();
+      video.hidden = false;
+      video.play().catch(() => {});
+    } else {
+      canvas.remove();
+      video?.remove();
+    }
+  }
+  function teardown() { if (destroy) { destroy(); destroy = null; } }
+
+  document.addEventListener('astro:page-load', mount);
+  document.addEventListener('astro:before-swap', teardown);
+</script>
+
+<style>
+  .hero-haze-layer { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+  .hero-haze-canvas, .hero-haze-video {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; mix-blend-mode: screen; opacity: 0.7;
+  }
+</style>
