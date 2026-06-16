@@ -4,6 +4,7 @@ import Nav from '../components/Nav.astro';
 import HeroHaze from '../components/HeroHaze.astro';
 import PillarScroll from '../components/PillarScroll.astro';
 import ProcessTrack from '../components/ProcessTrack.astro';
+import WarpImage from '../components/WarpImage.astro';
 ---
 <Base title="LA Scenting — Scent Architecture for Extraordinary Spaces" description="LA Scenting designs immersive scent identities that shape emotion, behaviour and brand memory. Scent architecture for extraordinary spaces across Southeast Asia.">
   <Nav />
@@ -64,7 +65,7 @@ import ProcessTrack from '../components/ProcessTrack.astro';
     <!-- Case Study 1 -->
     <div class="case-study reveal">
       <div class="img-box cs-img" style="aspect-ratio: 4/3; position: relative;">
-        <img loading="lazy" decoding="async" src="/images/changi.jpg" alt="Changi Airport Singapore">
+        <WarpImage src="/images/changi.jpg" alt="Changi Airport Singapore" class="fill" />
         <span class="cs-tag">Hospitality</span>
       </div>
       <div>
@@ -82,7 +83,7 @@ import ProcessTrack from '../components/ProcessTrack.astro';
     <!-- Case Study 2 -->
     <div class="case-study reverse reveal">
       <div class="img-box cs-img" style="aspect-ratio: 4/3; position: relative;">
-        <img loading="lazy" decoding="async" src="/images/staircase.jpg" alt="Bespoke Hotel Scent Environment">
+        <WarpImage src="/images/staircase.jpg" alt="Bespoke Hotel Scent Environment" class="fill" />
         <span class="cs-tag">Luxury Hospitality</span>
       </div>
       <div>

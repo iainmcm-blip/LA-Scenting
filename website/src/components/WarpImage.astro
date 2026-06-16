@@ -1,0 +1,46 @@
+---
+interface Props { src: string; alt: string; class?: string; }
+const { src, alt, class: cls = '' } = Astro.props;
+---
+<figure class:list={["warp", cls]} data-warp>
+  <canvas data-warp-canvas class="warp-canvas"></canvas>
+  <img data-warp-img src={src} alt={alt} class="warp-img reveal" loading="lazy" />
+</figure>
+
+<script>
+  import { detectTier } from '../lib/capability';
+  const destroyers: Array<() => void> = [];
+
+  async function build() {
+    const tier = detectTier();
+    const figs = Array.from(document.querySelectorAll<HTMLElement>('[data-warp]'));
+    for (const fig of figs) {
+      const canvas = fig.querySelector<HTMLCanvasElement>('[data-warp-canvas]');
+      const img = fig.querySelector<HTMLImageElement>('[data-warp-img]');
+      if (!canvas || !img) continue;
+      if (tier === 'full') {
+        img.style.visibility = 'hidden';      // canvas shows the image instead
+        canvas.style.display = 'block';
+        const mount = () => import('../lib/gl/warp').then(({ mountWarp }) => destroyers.push(mountWarp(canvas, img.currentSrc || img.src)));
+        if (img.complete) mount(); else img.addEventListener('load', mount, { once: true });
+      } else {
+        canvas.remove();
+        // let the existing .reveal IntersectionObserver in app.js fade it in;
+        // if app.js isn't present on this page, reveal immediately as a safety net:
+        if (!document.querySelector('script[src="/app.js"]')) img.classList.add('visible');
+      }
+    }
+  }
+  function teardown() { while (destroyers.length) destroyers.pop()!(); }
+
+  document.addEventListener('astro:page-load', build);
+  document.addEventListener('astro:before-swap', teardown);
+</script>
+
+<style>
+  .warp { position: relative; overflow: hidden; }
+  .warp-canvas { display: none; position: absolute; inset: 0; width: 100%; height: 100%; }
+  .warp-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  /* When placed inside a positioned container (e.g. .img-box), use class="fill" */
+  .warp.fill { position: absolute; inset: 0; width: 100%; height: 100%; }
+</style>
