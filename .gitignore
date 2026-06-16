@@ -1,1 +1,5 @@
 .vercel
+node_modules/
+website/dist/
+website/.astro/
+.DS_Store
