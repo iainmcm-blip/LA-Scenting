@@ -1,0 +1,139 @@
+---
+const steps = [
+  { n: '01', title: 'Spatial Audit',     body: 'Understanding architecture, flow, dwell times, and emotional intention of every zone.' },
+  { n: '02', title: 'Brand Translation', body: "Decoding your brand's visual and tonal identity into olfactory language." },
+  { n: '03', title: 'Scent Composition', body: 'Bespoke formulation by our master perfumers, refined through iterative spatial testing.' },
+];
+---
+<section class="process" data-process>
+  <div class="process-header">
+    <span class="s-label">Our Process</span>
+    <h2 class="s-title">From Brief to<br>Atmosphere</h2>
+  </div>
+  <div class="process-track">
+    {steps.map((s) => (
+      <article class="step">
+        <span class="step-n">{s.n}</span>
+        <h3 class="step-title">{s.title}</h3>
+        <p class="step-body">{s.body}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { initScroll, gsap, ScrollTrigger } from '../lib/scroll';
+  import { detectTier } from '../lib/capability';
+
+  function build() {
+    const section = document.querySelector<HTMLElement>('[data-process]');
+    const track = section?.querySelector<HTMLElement>('.process-track');
+    if (!section || !track) return;
+
+    const tier = detectTier();
+    // mobile / reduced: natural stacked CSS layout, no horizontal scrub
+    if (tier === 'reduced' || tier === 'mobile') return;
+
+    initScroll();
+
+    const scrollLen = () => Math.max(0, track.scrollWidth - window.innerWidth);
+
+    gsap.to(track, {
+      x: () => -scrollLen(),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: () => '+=' + scrollLen(),
+        pin: true,
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    ScrollTrigger.refresh();
+  }
+
+  document.addEventListener('astro:page-load', build);
+</script>
+
+<style>
+  .process {
+    overflow: hidden;
+    background: var(--olive);
+  }
+
+  .process-header {
+    padding: var(--section-v) 8vw 0;
+  }
+
+  .process-header .s-label {
+    color: rgba(201, 175, 128, 0.5);
+  }
+
+  .process-header .s-title {
+    color: var(--cream);
+    margin-top: 0.4rem;
+  }
+
+  .process-track {
+    display: flex;
+    gap: 6vw;
+    padding: 6vh 8vw;
+    min-height: 70vh;
+    align-items: center;
+    width: max-content;
+  }
+
+  .step {
+    flex: 0 0 70vw;
+    max-width: 30rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .step-n {
+    font-family: var(--font-note);
+    font-style: italic;
+    font-size: 2.5rem;
+    color: var(--sand);
+    opacity: 0.5;
+  }
+
+  .step-title {
+    font-family: var(--font-head);
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+
+  .step-body {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(237, 233, 223, 0.55);
+    font-weight: 300;
+  }
+
+  @media (max-width: 900px) {
+    .process-header {
+      padding: var(--section-v) var(--section-h) 0;
+    }
+
+    .process-track {
+      flex-direction: column;
+      width: auto;
+      padding: 6vh var(--section-h) var(--section-v);
+      min-height: 0;
+      gap: 3rem;
+    }
+
+    .step {
+      flex: none;
+      max-width: 100%;
+    }
+  }
+</style>
