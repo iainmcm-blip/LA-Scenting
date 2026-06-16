@@ -1,11 +1,18 @@
+---
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  path === href || path === href + '/' || path === href + '.html' ||
+  (href === '/' && (path === '/index.html' || path === '/'));
+---
+
 <nav class="main-nav">
   <a class="logo" href="/"><span class="la">LA</span>SCENTING</a>
   <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/about-us">About Us</a></li>
-    <li><a href="/philosophy">Philosophy</a></li>
-    <li><a href="/services">Services &amp; Products</a></li>
-    <li><a href="/journal">The Journal</a></li>
+    <li><a href="/" class:list={[{ active: isActive('/') }]}>Home</a></li>
+    <li><a href="/about-us" class:list={[{ active: isActive('/about-us') }]}>About Us</a></li>
+    <li><a href="/philosophy" class:list={[{ active: isActive('/philosophy') }]}>Philosophy</a></li>
+    <li><a href="/services" class:list={[{ active: isActive('/services') }]}>Services &amp; Products</a></li>
+    <li><a href="/journal" class:list={[{ active: isActive('/journal') }]}>The Journal</a></li>
     <li><a href="#">Motion Sensory</a></li>
     <li><a href="#">Contact Us</a></li>
   </ul>
