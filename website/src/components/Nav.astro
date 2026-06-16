@@ -5,7 +5,7 @@ const isActive = (href: string) =>
   (href === '/' && (path === '/index.html' || path === '/'));
 ---
 
-<nav class="main-nav">
+<nav class="main-nav" transition:persist>
   <a class="logo" href="/"><span class="la">LA</span>SCENTING</a>
   <ul class="nav-links">
     <li><a href="/" class:list={[{ active: isActive('/') }]}>Home</a></li>
@@ -22,7 +22,7 @@ const isActive = (href: string) =>
   </button>
 </nav>
 
-<div class="mobile-nav-overlay" id="mobileNav">
+<div class="mobile-nav-overlay" id="mobileNav" transition:persist="mobilenav">
   <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">✕</button>
   <a href="/">Home</a>
   <a href="/about-us">About Us</a>
@@ -33,3 +33,16 @@ const isActive = (href: string) =>
   <a href="#">Contact Us</a>
   <a href="#" class="mobile-nav-cta">Request a Consultation</a>
 </div>
+
+<script>
+  function syncActive() {
+    const path = location.pathname;
+    document.querySelectorAll<HTMLAnchorElement>('.main-nav .nav-links a').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      const isReal = href !== '#' && href.startsWith('/');
+      const match = isReal && (path === href || path === href + '/' || path === href + '.html' || (href === '/' && (path === '/' || path === '/index.html')));
+      a.classList.toggle('active', !!match);
+    });
+  }
+  document.addEventListener('astro:page-load', syncActive);
+</script>
