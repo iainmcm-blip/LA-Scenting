@@ -18,5 +18,11 @@ const { title, description = 'LA Scenting designs immersive scent identities for
 </head>
 <body>
   <slot />
+  <script>
+    // Site-wide smooth scroll (Lenis + GSAP ScrollTrigger sync). Idempotent and
+    // no-op under prefers-reduced-motion; runs on first load and every client nav.
+    import { initScroll } from '../lib/scroll';
+    document.addEventListener('astro:page-load', () => { initScroll(); });
+  </script>
 </body>
 </html>

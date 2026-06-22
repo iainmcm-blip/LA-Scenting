@@ -13,10 +13,9 @@ const isActive = (href: string) =>
     <li><a href="/philosophy" class:list={[{ active: isActive('/philosophy') }]}>Philosophy</a></li>
     <li><a href="/services" class:list={[{ active: isActive('/services') }]}>Services &amp; Products</a></li>
     <li><a href="/journal" class:list={[{ active: isActive('/journal') }]}>The Journal</a></li>
-    <li><a href="#">Motion Sensory</a></li>
-    <li><a href="#">Contact Us</a></li>
+    <li><a href="https://motion-sensory-site.vercel.app/index.html" target="_blank" rel="noopener">Motion Sensory</a></li>
   </ul>
-  <a class="nav-cta" href="#">Request a Consultation</a>
+  <a class="nav-cta" href="/contact">Request a Consultation</a>
   <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mobileNav').classList.add('open')">
     <span></span><span></span><span></span>
   </button>
@@ -29,9 +28,9 @@ const isActive = (href: string) =>
   <a href="/philosophy">Philosophy</a>
   <a href="/services">Services &amp; Products</a>
   <a href="/journal">The Journal</a>
-  <a href="#">Motion Sensory</a>
-  <a href="#">Contact Us</a>
-  <a href="#" class="mobile-nav-cta">Request a Consultation</a>
+  <a href="https://motion-sensory-site.vercel.app/index.html" target="_blank" rel="noopener">Motion Sensory</a>
+  <a href="/contact">Contact Us</a>
+  <a href="/contact" class="mobile-nav-cta">Request a Consultation</a>
 </div>
 
 <script>

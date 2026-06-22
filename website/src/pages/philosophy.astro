@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import PageHaze from '../components/PageHaze.astro';
 ---
 <Base title="Philosophy — LA Scenting" description="Emotional Architecture — LA Scenting's philosophy that scent is the invisible, most intimate layer of great design.">
   <Nav />
@@ -21,9 +23,13 @@ import Nav from '../components/Nav.astro';
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img loading="eager" fetchpriority="high" decoding="async" src="/images/marble.jpg" alt="Philosophy — Emotional Architecture">
+    <video autoplay muted loop playsinline poster="/images/philosophy-hero.jpg" aria-label="Philosophy — Emotional Architecture">
+      <source src="/video/philosophy-hero.mp4" type="video/mp4">
+      <img decoding="async" src="/images/philosophy-hero.jpg" alt="Philosophy — Emotional Architecture">
+    </video>
   </div>
   <div class="page-hero-overlay"></div>
+  <PageHaze />
   <div class="page-hero-content">
     <span class="hero-eyebrow">The Vision</span>
     <h1 class="hero-title">Emotional Architecture</h1>
@@ -128,8 +134,7 @@ import Nav from '../components/Nav.astro';
 <!-- QUOTE -->
 <section class="section-wrap quote-bg">
   <div class="quote-inner reveal">
-    <blockquote>"Scent is the last layer of architecture. It is the signature of the space — and the first thing that memory recalls."</blockquote>
-    <p class="quote-attr">LA Scenting · Founder</p>
+    <blockquote>Scent is the last layer of architecture. It is the signature of the space — and the first thing that memory recalls.</blockquote>
   </div>
 </section>
 
@@ -139,48 +144,11 @@ import Nav from '../components/Nav.astro';
     <span class="s-label" style="color: rgba(201,175,128,0.5);">Work with Us</span>
     <h2 style="font-family: var(--font-head); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--cream); margin-bottom: 16px;">Ready to Design Your Signature Scent?</h2>
     <p class="s-body" style="color: rgba(237,233,223,0.45); margin-bottom: 40px;">We work with a select number of clients each season. Tell us about your space and vision.</p>
-    <a href="#" class="btn btn-sand">Request a Consultation <span style="font-size:1.1em">→</span></a>
+    <a href="/contact" class="btn btn-sand">Request a Consultation <span style="font-size:1.1em">→</span></a>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="main-footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo-mark"><span class="la">LA</span>SCENTING</div>
-      <p class="footer-tagline">Scent architecture for extraordinary spaces.<br>Now serving Southeast Asia.</p>
-    </div>
-    <div>
-      <span class="footer-col-label">Navigate</span>
-      <ul class="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/philosophy">Philosophy</a></li>
-        <li><a href="/services">Services &amp; Products</a></li>
-        <li><a href="/journal">The Journal</a></li>
-      </ul>
-    </div>
-    <div>
-      <span class="footer-col-label">Company</span>
-      <ul class="footer-links">
-        <li><a href="#">Motion Sensory</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Sustainability</a></li>
-      </ul>
-    </div>
-    <div>
-      <span class="footer-col-label">Connect</span>
-      <ul class="footer-links">
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2024 LA Scenting. All rights reserved.</p>
-    <p class="footer-copy">Scent Architecture · Southeast Asia</p>
-  </div>
-</footer>
+<Footer />
 
 <script src="/app.js" is:inline></script>
 </Base>

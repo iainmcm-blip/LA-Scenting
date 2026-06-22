@@ -1,0 +1,36 @@
+---
+// Procedural scent-haze overlay for interior page heroes. Composites over the
+// hero photo with a soft screen blend. Full-tier only; on mobile/reduced the
+// canvas is removed (the static hero image + parallax carry those tiers).
+---
+<div class="page-haze-layer" aria-hidden="true">
+  <canvas data-page-haze class="page-haze-canvas"></canvas>
+</div>
+
+<script>
+  import { detectTier } from '../lib/capability';
+  let destroy: null | (() => void) = null;
+
+  async function mount() {
+    const canvas = document.querySelector<HTMLCanvasElement>('[data-page-haze]');
+    if (!canvas) return; // no page hero on this page
+    if (detectTier() === 'full') {
+      const { mountHaze } = await import('../lib/gl/haze');
+      destroy = mountHaze(canvas);
+    } else {
+      canvas.remove();
+    }
+  }
+  function teardown() { if (destroy) { destroy(); destroy = null; } }
+
+  document.addEventListener('astro:page-load', mount);
+  document.addEventListener('astro:before-swap', teardown);
+</script>
+
+<style>
+  .page-haze-layer { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+  .page-haze-canvas {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; mix-blend-mode: screen; opacity: 0.55;
+  }
+</style>

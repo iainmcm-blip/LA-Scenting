@@ -1,0 +1,248 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import PageHaze from '../components/PageHaze.astro';
+---
+<Base title="Contact Us — LA Scenting" description="Begin a conversation with LA Scenting. We work with a select number of clients each season — tell us about your space.">
+  <Nav />
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - var(--nav-h));
+  }
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-image { min-height: 360px; order: -1; }
+  }
+  .contact-form-wrap {
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 72px;
+  }
+  @media (max-width: 600px) {
+    .contact-form-wrap { padding: 60px 32px; }
+  }
+  .contact-image {
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .form-group {
+    margin-bottom: 24px;
+  }
+  .form-label {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(45,45,35,0.45);
+    margin-bottom: 8px;
+  }
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(45,45,35,0.18);
+    padding: 10px 0;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--olive);
+    transition: border-color 0.3s;
+    outline: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+  .form-input:focus,
+  .form-textarea:focus {
+    border-bottom-color: var(--sand);
+  }
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: rgba(45,45,35,0.25);
+    font-weight: 300;
+  }
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.7;
+  }
+  .form-submit {
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-head);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--white);
+    background: var(--olive);
+    border: none;
+    padding: 18px 40px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .form-submit:hover {
+    background: var(--olive-md);
+    transform: translateY(-1px);
+  }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 40px 0;
+  }
+  .form-success.visible { display: block; }
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 600px) {
+    .form-row-2 { grid-template-columns: 1fr; }
+  }
+  .contact-meta {
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(45,45,35,0.08);
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .contact-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .contact-meta-label {
+    font-family: var(--font-head);
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(45,45,35,0.4);
+  }
+  .contact-meta-value {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--olive);
+  }
+</style>
+
+<div style="padding-top: var(--nav-h);">
+  <div class="contact-grid">
+
+    <!-- FORM SIDE -->
+    <div class="contact-form-wrap">
+      <div style="max-width: 480px;">
+        <span class="s-label" style="margin-bottom: 16px;">Begin Here</span>
+        <h1 style="font-family: var(--font-head); font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--olive); line-height: 1.15; margin-bottom: 24px;">Let's Design<br>Your Signature.</h1>
+        <p class="s-body" style="margin-bottom: 48px; color: rgba(45,45,35,0.65);">We work with a select number of clients each season — hospitality groups, real estate developers, luxury retailers, and brands who understand that the spaces they create deserve to be felt, not just seen. Tell us about your space and we will be in touch within 48 hours.</p>
+
+        <form
+          id="contactForm"
+          name="contact"
+          method="POST"
+          action="/contact?success=true"
+          onsubmit="handleFormSubmit(event)"
+        >
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" for="name">Your Name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="First &amp; Last" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="you@company.com" required>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" for="company">Company / Brand</label>
+              <input class="form-input" type="text" id="company" name="company" placeholder="Your organisation">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="industry">Industry</label>
+              <input class="form-input" type="text" id="industry" name="industry" placeholder="e.g. Hospitality, Retail">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="region">Region / Country</label>
+            <input class="form-input" type="text" id="region" name="region" placeholder="e.g. Singapore, UAE, Thailand">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="overview">Overview of Your Requirement</label>
+            <textarea class="form-textarea" id="overview" name="overview" placeholder="Tell us about your space — size, context, what you want guests to feel, and any timing considerations." rows="5"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">
+            Send Enquiry <span style="font-size: 1.1em;">→</span>
+          </button>
+        </form>
+
+        <div id="formSuccess" class="form-success">
+          <p style="font-family: var(--font-note); font-style: italic; font-size: 1.6rem; color: var(--olive); margin-bottom: 12px;">Thank you.</p>
+          <p class="s-body" style="color: rgba(45,45,35,0.6);">We have received your enquiry and will be in touch within 48 hours.</p>
+        </div>
+
+        <div class="contact-meta">
+          <div class="contact-meta-item">
+            <span class="contact-meta-label">Email</span>
+            <a href="mailto:aaliyah@liyahaura.com" class="contact-meta-value" style="color: var(--olive);">aaliyah@liyahaura.com</a>
+          </div>
+          <div class="contact-meta-item">
+            <span class="contact-meta-label">Location</span>
+            <span class="contact-meta-value">Singapore · UAE</span>
+          </div>
+          <div class="contact-meta-item">
+            <span class="contact-meta-label">Response Time</span>
+            <span class="contact-meta-value">Within 48 hours</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMAGE SIDE -->
+    <div class="contact-image">
+      <img loading="lazy" decoding="async" src="/images/bottles-motion.jpg" alt="LA Scenting — the art of fragrance">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(45,45,35,0.1) 0%, rgba(45,45,35,0.4) 100%);"></div>
+      <div style="position: absolute; bottom: 64px; left: 64px; right: 64px;">
+        <p style="font-family: var(--font-note); font-style: italic; font-size: clamp(1.2rem, 2.5vw, 1.8rem); color: rgba(237,233,223,0.9); line-height: 1.5;">Scent is the most direct path to memory. We engineer that path with architectural precision.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<Footer />
+
+<script is:inline>
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
+    if (form && success) {
+      form.style.display = 'none';
+      success.classList.add('visible');
+    }
+  }
+</script>
+<script src="/app.js" is:inline></script>
+</Base>

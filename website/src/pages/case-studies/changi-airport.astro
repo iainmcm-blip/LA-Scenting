@@ -1,0 +1,286 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import PageHaze from '../../components/PageHaze.astro';
+---
+<Base title="Changi Airport Singapore — LA Scenting Case Study" description="How LA Scenting designed the flagship olfactory identity for Changi Airport Singapore — the world's most awarded international gateway.">
+  <Nav />
+
+<style>
+  .cs-hero {
+    position: relative;
+    height: 80vh;
+    min-height: 520px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+  .cs-hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .cs-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .cs-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(45,45,35,0.2) 0%, rgba(45,45,35,0.75) 100%);
+  }
+  .cs-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 var(--gutter) 72px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .cs-meta-bar {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-top: 64px;
+    padding: 48px 0;
+    border-top: 1px solid rgba(45,45,35,0.08);
+    border-bottom: 1px solid rgba(45,45,35,0.08);
+  }
+  .cs-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cs-meta-label {
+    font-family: var(--font-head);
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(45,45,35,0.4);
+  }
+  .cs-meta-value {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--olive);
+    font-weight: 400;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(237,233,223,0.06);
+    margin-top: 0;
+  }
+  .stat-cell {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--olive);
+  }
+  .stat-big {
+    font-family: var(--font-note);
+    font-style: italic;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    color: var(--sand);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .stat-desc {
+    font-family: var(--font-head);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(237,233,223,0.45);
+  }
+  .cs-body-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .ecosystem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .eco-item {
+    padding: 28px 24px;
+    background: var(--cream-mid, #e8e3d9);
+    border-left: 2px solid var(--sand);
+  }
+  .eco-title {
+    font-family: var(--font-head);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--olive);
+    margin-bottom: 8px;
+  }
+  @media (max-width: 900px) {
+    .cs-body-grid { grid-template-columns: 1fr; gap: 48px; }
+    .stat-grid { grid-template-columns: 1fr; }
+    .ecosystem-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .cs-meta-bar { gap: 24px; }
+    .cs-hero-content { padding-bottom: 48px; }
+  }
+</style>
+
+<!-- HERO -->
+<section class="cs-hero" style="padding-top: var(--nav-h);">
+  <div class="cs-hero-bg">
+    <img loading="eager" decoding="async" src="/images/changi.jpg" alt="Changi Airport Singapore — LA Scenting">
+  </div>
+  <div class="cs-hero-overlay"></div>
+  <PageHaze />
+  <div class="cs-hero-content">
+    <span class="s-label" style="color: rgba(201,175,128,0.6); margin-bottom: 16px;">Case Study · 01</span>
+    <h1 style="font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cream); line-height: 1.1; max-width: 640px;">Changi Airport Singapore</h1>
+    <p style="font-family: var(--font-note); font-style: italic; font-size: clamp(1rem, 2vw, 1.3rem); color: rgba(237,233,223,0.65); margin-top: 16px;">Flagship Sensory Identity Programme</p>
+  </div>
+</section>
+
+<!-- META BAR -->
+<section style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="cs-meta-bar reveal">
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Client</span>
+        <span class="cs-meta-value">Changi Airport Group</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Sector</span>
+        <span class="cs-meta-value">Airports &amp; Transit Hubs</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Scope</span>
+        <span class="cs-meta-value">Scent Identity · Diffusion · Retail Activation</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Location</span>
+        <span class="cs-meta-value">Singapore</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section-wrap scale-bg" style="padding: 0;">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="stat-grid reveal">
+      <div class="stat-cell">
+        <div class="stat-big">40%</div>
+        <div class="stat-desc">Reduction in Perceived Stress</div>
+      </div>
+      <div class="stat-cell" style="background: rgba(255,255,255,0.03);">
+        <div class="stat-big">20%</div>
+        <div class="stat-desc">Increase in Retail Dwell Time</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-big">3K+</div>
+        <div class="stat-desc">Passengers Scented Per Hour</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE BRIEF -->
+<section class="section-wrap" style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="cs-body-grid">
+      <div class="reveal">
+        <span class="s-label">The Brief</span>
+        <h2 class="s-title" style="margin-bottom: 28px;">A Gateway That<br>Deserves to Be Felt</h2>
+        <p class="s-body" style="margin-bottom: 20px;">Changi Airport Singapore is not simply an airport — it is an experience that sets the standard for what aviation spaces can aspire to be. The world's most awarded international gateway, welcoming tens of millions of passengers annually, it demanded a scent identity commensurate with its global reputation.</p>
+        <p class="s-body" style="margin-bottom: 20px;">The brief was both ambitious and precise: design an olfactory programme that would make the terminal feel extraordinary to passengers from the first moment of arrival — one that would reduce travel anxiety, encourage exploration of retail and dining zones, and encode Changi in the memory of every guest who passed through.</p>
+        <p class="s-body">LA Scenting was appointed as the official scent curator and designer — the first such designation in the airport's history. The scope spanned arrivals halls, departure lounges, retail concourses, and VIP facilities, with passenger flows exceeding 3,000 per hour across the diffusion zones.</p>
+      </div>
+      <div class="reveal rd1">
+        <div class="img-box" style="aspect-ratio: 3/4; margin-bottom: 32px;">
+          <img loading="lazy" decoding="async" src="/images/amber-bottles-stacked.jpg" alt="LA Scenting fragrance compositions for Changi Airport">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SIGNATURE -->
+<section class="section-wrap" style="background: var(--olive);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="cs-body-grid">
+      <div class="reveal">
+        <div class="img-box" style="aspect-ratio: 3/4;">
+          <img loading="lazy" decoding="async" src="/images/fragrance-vials-dark.jpg" alt="Orchid Tea — the signature scent of Changi Airport">
+        </div>
+      </div>
+      <div class="reveal rd1" style="display: flex; flex-direction: column; justify-content: center;">
+        <span class="s-label" style="color: rgba(201,175,128,0.5);">The Signature</span>
+        <h2 class="s-title-lg" style="color: var(--cream); margin-bottom: 24px;">Orchid Tea</h2>
+        <p class="s-note" style="color: rgba(237,233,223,0.6); margin-bottom: 24px; font-size: clamp(0.9rem, 1.6vw, 1.1rem);">"A scent that must feel both global and Singaporean — serene and welcoming, yet unmistakably world-class."</p>
+        <p class="s-body" style="color: rgba(237,233,223,0.5); margin-bottom: 20px;">We developed 'Orchid Tea' — a bespoke composition built around three emotional pillars: the serene florality of the Singapore national flower, the calm warmth of green and white tea, and a lift of fresh citrus that evokes departure, possibility, and open skies.</p>
+        <p class="s-body" style="color: rgba(237,233,223,0.5);">The formula was engineered to perform consistently across high-traffic public zones — maintaining presence without ever becoming assertive, and shifting subtly across different terminal areas to reflect their distinct emotional purposes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE ECOSYSTEM -->
+<section class="section-wrap" style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="reveal" style="max-width: 640px; margin-bottom: 0;">
+      <span class="s-label">The Fragrance Ecosystem</span>
+      <h2 class="s-title" style="margin-bottom: 24px;">Beyond the Air Itself</h2>
+      <p class="s-body">A signature olfactory identity requires more than ambient diffusion. We designed a complete fragrance ecosystem that extended the Orchid Tea experience across every sensory touchpoint within the terminal environment.</p>
+    </div>
+    <div class="ecosystem-grid reveal rd1">
+      <div class="eco-item">
+        <div class="eco-title">Ambient Diffusion</div>
+        <p class="s-body" style="font-size: 0.85rem;">Precision cold-air nebulization across HVAC and standalone sculptural units — calibrated by zone, time of day, and passenger density.</p>
+      </div>
+      <div class="eco-item">
+        <div class="eco-title">Scented Candles</div>
+        <p class="s-body" style="font-size: 0.85rem;">Bespoke Orchid Tea candles for VIP lounges, premium retail touchpoints, and gifting experiences.</p>
+      </div>
+      <div class="eco-item">
+        <div class="eco-title">Fragrance Oils</div>
+        <p class="s-body" style="font-size: 0.85rem;">Artisanal signature oils for hospitality suites, spa facilities, and exclusive traveller gifting collections.</p>
+      </div>
+      <div class="eco-item">
+        <div class="eco-title">Sanitiser Range</div>
+        <p class="s-body" style="font-size: 0.85rem;">Scented hand sanitiser dispensers throughout the terminal — function transformed into a branded sensory moment.</p>
+      </div>
+      <div class="eco-item" style="grid-column: 1 / -1;">
+        <div class="eco-title">Wildlife Collaboration · Mandai</div>
+        <p class="s-body" style="font-size: 0.85rem;">A bespoke nature-inspired sub-range developed in collaboration with Mandai Wildlife Reserve — weaving Singapore's biodiversity heritage into the traveller experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section class="section-wrap quote-bg">
+  <div class="quote-inner reveal">
+    <blockquote>"Changi is not just a destination — it is a feeling. Our work was to ensure that feeling began the moment you crossed the threshold."</blockquote>
+    <p class="quote-attr">Aaliyah Hamdoon · Founder, LA Scenting</p>
+  </div>
+</section>
+
+<!-- NEXT STEPS CTA -->
+<section class="section-wrap newsletter-bg">
+  <div style="max-width: 600px; margin: 0 auto; text-align: center;" class="reveal">
+    <span class="s-label" style="color: rgba(201,175,128,0.5);">Work with Us</span>
+    <h2 style="font-family: var(--font-head); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--cream); margin-bottom: 16px; line-height: 1.2;">Your Space Deserves<br>a Signature.</h2>
+    <p class="s-body" style="color: rgba(237,233,223,0.45); margin-bottom: 40px;">We work with a select number of clients each season. Tell us about your space and we will be in touch within 48 hours.</p>
+    <a href="/contact" class="btn btn-sand">Request a Consultation <span style="font-size:1.1em">→</span></a>
+  </div>
+</section>
+
+<Footer />
+<script src="/app.js" is:inline></script>
+</Base>

@@ -1,8 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import PageHaze from '../components/PageHaze.astro';
 ---
-<Base title="Services &amp; Products — LA Scenting" description="LA Scenting's hardware and fluid mechanics — precision diffusion systems engineered for scent integrity at any architectural scale.">
+<Base title="Services &amp; Products — LA Scenting" description="LA Scenting's diffusion systems and consulting services — precision scent architecture engineered for extraordinary spaces.">
   <Nav />
 
 <style>
@@ -54,42 +56,60 @@ import Nav from '../components/Nav.astro';
     font-size: 1.2rem;
     color: var(--sand);
   }
+  .method-intro {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .editorial-break {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+  }
+  @media (max-width: 768px) {
+    .editorial-break { grid-template-columns: 1fr; }
+  }
 </style>
 
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img loading="eager" fetchpriority="high" decoding="async" src="/images/suite.jpg" alt="The Collection — LA Scenting Hardware">
+    <video autoplay muted loop playsinline poster="/images/services-hero.jpg" aria-label="LA Scenting — The Method">
+      <source src="/video/services-hero.mp4" type="video/mp4">
+      <img decoding="async" src="/images/services-hero.jpg" alt="LA Scenting — The Method">
+    </video>
   </div>
   <div class="page-hero-overlay"></div>
+  <PageHaze />
   <div class="page-hero-content">
-    <span class="hero-eyebrow">Hardware &amp; Fluid Mechanics</span>
+    <span class="hero-eyebrow">The Method</span>
     <h1 class="hero-title">The Scenting<br>Architecture</h1>
   </div>
 </section>
 
-<!-- SYSTEMIC ELEGANCE INTRO -->
+<!-- THE METHOD INTRO -->
 <section class="section-wrap scale-bg">
   <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
-    <div class="reveal" style="text-align: center; margin-bottom: 64px;">
-      <span class="s-label" style="color: rgba(201,175,128,0.5);">Systemic Elegance</span>
-      <h2 class="s-title-lg" style="color: var(--cream);">Precision Engineering<br>Meets Aesthetic Harmony</h2>
+    <div class="reveal method-intro" style="margin-bottom: 64px;">
+      <span class="s-label" style="color: rgba(201,175,128,0.5);">The Method</span>
+      <h2 class="s-title-lg" style="color: var(--cream);">Atmosphere First.<br>Engineering Always.</h2>
+      <p class="s-body" style="color: rgba(237,233,223,0.55); margin-top: 20px; max-width: 560px; margin-left: auto; margin-right: auto;">Every LA Scenting engagement begins not with a product selection, but with a question: what should this space make someone feel? Everything that follows — the accord, the system, the calibration — is the answer to that question, engineered with precision.</p>
     </div>
     <div class="grid-3 reveal">
       <div style="text-align: center; padding: 36px 24px; border: 1px solid rgba(237,233,223,0.07);">
         <p style="font-family: var(--font-note); font-style: italic; font-size: 1rem; color: rgba(201,175,128,0.6); margin-bottom: 12px;">Integration</p>
         <h3 style="font-family: var(--font-head); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cream); margin-bottom: 8px;">HVAC &amp; Standalone</h3>
-        <p class="s-body" style="color: rgba(237,233,223,0.4); font-size: 0.82rem;">Seamless connection to air handling units or discreet sculptural diffusers — your choice of integration.</p>
+        <p class="s-body" style="color: rgba(237,233,223,0.4); font-size: 0.82rem;">Seamlessly connects to existing air handling units — or deploys as a discreet sculptural diffuser. Your architecture dictates the approach; our systems adapt without compromise.</p>
       </div>
       <div style="text-align: center; padding: 36px 24px; border: 1px solid rgba(237,233,223,0.07);">
         <p style="font-family: var(--font-note); font-style: italic; font-size: 1rem; color: rgba(201,175,128,0.6); margin-bottom: 12px;">Precision</p>
         <h3 style="font-family: var(--font-head); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cream); margin-bottom: 8px;">0.1 Micrometre Mist</h3>
-        <p class="s-body" style="color: rgba(237,233,223,0.4); font-size: 0.82rem;">Cold-air nebulization at 0.1 micrometre — preserving the therapeutic integrity of every molecular note.</p>
+        <p class="s-body" style="color: rgba(237,233,223,0.4); font-size: 0.82rem;">Cold-air nebulization at 0.1 micrometre preserves the therapeutic and aromatic integrity of every molecular note — delivering a scent that performs exactly as formulated, every hour of every day.</p>
       </div>
       <div style="text-align: center; padding: 36px 24px; border: 1px solid rgba(237,233,223,0.07);">
         <p style="font-family: var(--font-note); font-style: italic; font-size: 1rem; color: rgba(201,175,128,0.6); margin-bottom: 12px;">Intelligence</p>
         <h3 style="font-family: var(--font-head); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cream); margin-bottom: 8px;">IoT Cloud Control</h3>
-        <p class="s-body" style="color: rgba(237,233,223,0.4); font-size: 0.82rem;">Manage entire global fleets from a single dashboard — intensity, scheduling, diagnostics, all in real time.</p>
+        <p class="s-body" style="color: rgba(237,233,223,0.4); font-size: 0.82rem;">Manage intensity, scheduling, and diagnostics across a single property or an entire global estate from one dashboard — giving operators real-time precision without the complexity.</p>
       </div>
     </div>
   </div>
@@ -102,29 +122,29 @@ import Nav from '../components/Nav.astro';
       <div class="reveal">
         <div class="product-label">01</div>
         <span class="s-label">Scent Medium</span>
-        <h2 class="s-title" style="margin-bottom: 8px;">For Large-Scale<br>Architecture</h2>
-        <p class="s-note" style="margin-bottom: 28px;">Up to 1,000 sqm coverage via HVAC integration</p>
+        <h2 class="s-title" style="margin-bottom: 8px;">For Signature Spaces<br>That Demand More</h2>
+        <p class="s-body" style="margin-bottom: 28px;">Hotels, airport terminals, commercial towers, luxury retail flagships — spaces where scent must perform invisibly across an entire architecture. Scent Medium integrates directly with your HVAC system, distributing a uniform olfactory identity to every zone without a single visible unit.</p>
         <div>
           <div class="spec-row">
             <div class="spec-check"></div>
-            <p class="s-body">Seamless HVAC integration capability — distributes uniformly across multiple zones without visible hardware</p>
+            <p class="s-body">Covers up to 1,000 sqm — seamless multi-zone distribution via HVAC integration, no visible hardware</p>
           </div>
           <div class="spec-row">
             <div class="spec-check"></div>
-            <p class="s-body">Precision flow scheduling via the LA Scenting app — programme intensity, zones, and daily rhythms</p>
+            <p class="s-body">Precision scheduling via the LA Scenting app — intensity, zone mapping, and daily rhythms programmed to your brief</p>
           </div>
           <div class="spec-row">
             <div class="spec-check"></div>
-            <p class="s-body">Minimalist powder-coated aluminium finish — disappears into the architecture it serves</p>
+            <p class="s-body">Minimalist powder-coated aluminium finish — engineered to disappear into the architecture it serves</p>
           </div>
           <div class="spec-row">
             <div class="spec-check"></div>
-            <p class="s-body">Zero heat, zero ozone generation — diffusing 100% essential oil compounds for healthier interiors</p>
+            <p class="s-body">Zero heat, zero ozone — diffusing 100% essential oil compounds for healthier, purer interiors</p>
           </div>
         </div>
         <div style="margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="#" class="btn btn-dark">Inquire Now <span style="font-size:1.1em">→</span></a>
-          <a href="#" class="btn btn-light">Download Brochure</a>
+          <a href="/contact" class="btn btn-dark">Enquire Now <span style="font-size:1.1em">→</span></a>
+          <a href="/contact" class="btn btn-light">Request Brochure</a>
         </div>
       </div>
       <div class="img-box reveal rd1" style="aspect-ratio: 3/4;">
@@ -134,36 +154,47 @@ import Nav from '../components/Nav.astro';
   </div>
 </section>
 
+<!-- EDITORIAL BREAK — amber bottles -->
+<div class="editorial-break">
+  <div class="img-box" style="min-height: 480px;">
+    <img loading="lazy" decoding="async" src="/images/amber-bottles-stacked.jpg" alt="LA Scenting — the art of fragrance composition">
+  </div>
+  <div style="background: var(--olive); display: flex; flex-direction: column; justify-content: center; padding: 72px 64px;">
+    <span class="s-label" style="color: rgba(201,175,128,0.5);">The Accord</span>
+    <h2 class="s-title-lg" style="color: var(--cream); margin-bottom: 24px;">The Formula Is Never<br>the Starting Point.</h2>
+    <p class="s-body" style="color: rgba(237,233,223,0.55); margin-bottom: 0;">We design backwards from an emotion. The space is the brief. The brand is the language. The accord — developed by our master perfumers through iterative spatial testing — is the answer. Raw materials are selected for purity, longevity, and environmental responsibility.</p>
+  </div>
+</div>
+
 <!-- MODEL 02 -->
 <section class="section-wrap" style="background: var(--cream-mid);">
   <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
       <div class="img-box reveal" style="aspect-ratio: 3/4;">
-        <img loading="lazy" decoding="async" src="/images/boutique.jpg" alt="Streams — LA Scenting Model 02">
+        <img loading="lazy" decoding="async" src="/images/boutique-interior.jpg" alt="Streams — LA Scenting Model 02">
       </div>
       <div class="reveal rd1">
         <div class="product-label">02</div>
         <span class="s-label">Streams</span>
-        <h2 class="s-title" style="margin-bottom: 8px;">Directional Diffusion<br>for Boutique Spaces</h2>
-        <p class="s-note" style="margin-bottom: 28px;">Precision-targeted, sculptural design for intimate environments</p>
-        <p class="s-body" style="margin-bottom: 28px;">Streams is a standalone sculptural diffuser designed for spaces where discretion and beauty are equally non-negotiable. Directional diffusion lets you layer scent across distinct zones — a retail entrance, a VIP lounge, a hotel corridor — with pinpoint precision.</p>
+        <h2 class="s-title" style="margin-bottom: 8px;">Directional Scent<br>for Intimate Environments</h2>
+        <p class="s-body" style="margin-bottom: 28px;">For boutique spaces where discretion and beauty are equally non-negotiable. Streams is a standalone sculptural diffuser — designed to be placed, not hidden. Directional diffusion allows distinct olfactory zones within a single space: a retail entrance, a VIP lounge, a hotel corridor, each holding its own atmosphere.</p>
         <div>
           <div class="spec-row">
             <div class="spec-check"></div>
-            <p class="s-body">Directional scent deployment for zone-specific experiences within a single space</p>
+            <p class="s-body">Targeted zone-specific scenting — layer distinct atmospheres across different areas of one space</p>
           </div>
           <div class="spec-row">
             <div class="spec-check"></div>
-            <p class="s-body">Architectural sculptural form — designed to be displayed, not hidden</p>
+            <p class="s-body">Architectural sculptural form — a considered object that contributes to the interior rather than interrupting it</p>
           </div>
           <div class="spec-row">
             <div class="spec-check"></div>
-            <p class="s-body">App-controlled intensity and scheduling, individually per unit</p>
+            <p class="s-body">App-controlled intensity and scheduling, individually configurable per unit</p>
           </div>
         </div>
         <div style="margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="#" class="btn btn-dark">Inquire Now <span style="font-size:1.1em">→</span></a>
-          <a href="#" class="btn btn-light">Download Brochure</a>
+          <a href="/contact" class="btn btn-dark">Enquire Now <span style="font-size:1.1em">→</span></a>
+          <a href="/contact" class="btn btn-light">Request Brochure</a>
         </div>
       </div>
     </div>
@@ -181,17 +212,17 @@ import Nav from '../components/Nav.astro';
       <div class="reveal" style="padding: 40px 32px; border: 1px solid rgba(237,233,223,0.07);">
         <div class="tech-icon">✦</div>
         <h3 style="font-family: var(--font-head); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--cream); margin-bottom: 14px;">HVAC Seamless</h3>
-        <p class="s-body" style="color: rgba(237,233,223,0.45);">Direct connection to air handling units for uniform distribution across multiple zones without visible hardware — the gold standard for hotel chains, airports, and commercial towers.</p>
+        <p class="s-body" style="color: rgba(237,233,223,0.45);">Direct connection to air handling units ensures uniform distribution across multiple zones without visible hardware — the gold standard for hotel groups, airports, and commercial towers.</p>
       </div>
       <div class="reveal rd1" style="padding: 40px 32px; border: 1px solid rgba(237,233,223,0.07);">
         <div class="tech-icon">◎</div>
         <h3 style="font-family: var(--font-head); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--cream); margin-bottom: 14px;">Cloud Intelligence</h3>
-        <p class="s-body" style="color: rgba(237,233,223,0.45);">Monitor oil levels, schedule intensity, and manage entire global fleets from a single dashboard. Real-time diagnostics and remote adjustment — for operators who demand precision at scale.</p>
+        <p class="s-body" style="color: rgba(237,233,223,0.45);">Monitor oil levels, schedule intensity, and manage entire global estates from a single dashboard. Real-time diagnostics and remote adjustment — for operators who require precision at scale.</p>
       </div>
       <div class="reveal rd2" style="padding: 40px 32px; border: 1px solid rgba(237,233,223,0.07);">
         <div class="tech-icon">⟡</div>
         <h3 style="font-family: var(--font-head); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--cream); margin-bottom: 14px;">Sustainably Pure</h3>
-        <p class="s-body" style="color: rgba(237,233,223,0.45);">Diffusing 100% essential oil compounds with zero heat and zero ozone generation. Healthier air, preserved molecular integrity, and a commitment to environmental responsibility built into every unit.</p>
+        <p class="s-body" style="color: rgba(237,233,223,0.45);">100% essential oil compounds. Zero heat, zero ozone generation. Healthier air, preserved molecular integrity, and a commitment to environmental responsibility built into every unit we deploy.</p>
       </div>
     </div>
   </div>
@@ -203,20 +234,20 @@ import Nav from '../components/Nav.astro';
     <div class="reveal" style="text-align: center; margin-bottom: 56px;">
       <span class="s-label">Our Services</span>
       <h2 class="s-title">Beyond the Hardware</h2>
-      <p class="s-body" style="max-width: 520px; margin: 16px auto 0;">Every LA Scenting engagement is supported by our full suite of consulting and creative services.</p>
+      <p class="s-body" style="max-width: 560px; margin: 16px auto 0;">Every LA Scenting engagement is supported by our full suite of creative and strategic services — from the first brief to the final calibration and everything in between.</p>
     </div>
     <div class="grid-3">
       <div class="card-light reveal">
         <h3 class="card-h">Scent Consultancy</h3>
-        <p class="s-body">From brief to installation, our team guides every decision — spatial mapping, formulation, diffusion architecture, and ongoing refinement.</p>
+        <p class="s-body">From spatial audit to live installation, our team holds every decision — fragrance briefing, diffusion architecture, system specification, and ongoing refinement. One point of contact for the entire engagement.</p>
       </div>
       <div class="card-light reveal rd1">
         <h3 class="card-h">Multi-Sensory Design</h3>
-        <p class="s-body">Bespoke scent identities crafted to your brand's unique emotional language. We work with your design team to ensure total cohesion.</p>
+        <p class="s-body">Bespoke olfactory identities crafted to your brand's emotional language and spatial context. We work alongside your design and creative teams to ensure total sensory cohesion.</p>
       </div>
       <div class="card-light reveal rd2">
         <h3 class="card-h">White &amp; Private Label</h3>
-        <p class="s-body">Commission exclusive formulations for retail, gifting, or brand extensions. Your name. Our expertise. A composition the world won't find elsewhere.</p>
+        <p class="s-body">Commission exclusive formulations for retail, corporate gifting, or brand extensions. Your name. Our expertise. A composition the market will not find elsewhere — protected and proprietary.</p>
       </div>
     </div>
   </div>
@@ -227,52 +258,13 @@ import Nav from '../components/Nav.astro';
   <div style="max-width: 640px; margin: 0 auto; text-align: center;" class="reveal">
     <span class="s-label" style="color: rgba(201,175,128,0.5);">Ready to Begin</span>
     <h2 style="font-family: var(--font-head); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--cream); margin-bottom: 16px;">Transform Your Atmosphere</h2>
-    <p class="s-body" style="color: rgba(237,233,223,0.45); margin-bottom: 40px;">We work with a select number of clients each season. Enquire now to discuss your project.</p>
+    <p class="s-body" style="color: rgba(237,233,223,0.45); margin-bottom: 40px;">We work with a select number of clients each season. Tell us about your space and we will tell you what is possible.</p>
     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-      <a href="#" class="btn btn-sand">Inquire Now <span style="font-size:1.1em">→</span></a>
-      <a href="#" class="btn btn-ghost">Download Brochure</a>
+      <a href="/contact" class="btn btn-sand">Request a Consultation <span style="font-size:1.1em">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="main-footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo-mark"><span class="la">LA</span>SCENTING</div>
-      <p class="footer-tagline">Scent architecture for extraordinary spaces.<br>Now serving Southeast Asia.</p>
-    </div>
-    <div>
-      <span class="footer-col-label">Navigate</span>
-      <ul class="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/philosophy">Philosophy</a></li>
-        <li><a href="/services">Services &amp; Products</a></li>
-        <li><a href="/journal">The Journal</a></li>
-      </ul>
-    </div>
-    <div>
-      <span class="footer-col-label">Company</span>
-      <ul class="footer-links">
-        <li><a href="#">Motion Sensory</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Sustainability</a></li>
-      </ul>
-    </div>
-    <div>
-      <span class="footer-col-label">Connect</span>
-      <ul class="footer-links">
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2024 LA Scenting. All rights reserved.</p>
-    <p class="footer-copy">Scent Architecture · Southeast Asia</p>
-  </div>
-</footer>
-
+<Footer />
 <script src="/app.js" is:inline></script>
 </Base>

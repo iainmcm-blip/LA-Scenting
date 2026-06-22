@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import PageHaze from '../components/PageHaze.astro';
 ---
 <Base title="About Us — LA Scenting" description="LA Scenting was founded on a singular conviction: that every great space deserves a scent identity as considered as its architecture.">
   <Nav />
@@ -8,9 +10,13 @@ import Nav from '../components/Nav.astro';
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img loading="eager" fetchpriority="high" decoding="async" src="/images/incense.jpg" alt="LA Scenting — Our Story">
+    <video autoplay muted loop playsinline poster="/images/incense.jpg" aria-label="LA Scenting — Our Story">
+      <source src="/video/about-hero.mp4" type="video/mp4">
+      <img decoding="async" src="/images/incense.jpg" alt="LA Scenting — Our Story">
+    </video>
   </div>
   <div class="page-hero-overlay"></div>
+  <PageHaze />
   <div class="page-hero-content">
     <span class="hero-eyebrow">Est. 2018 · Southeast Asia</span>
     <h1 class="hero-title">Our Story</h1>
@@ -93,17 +99,17 @@ import Nav from '../components/Nav.astro';
 <section class="section-wrap" style="background: var(--cream-mid);">
   <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
     <div class="grid-2">
-      <div class="img-box reveal" style="aspect-ratio: 4/5;">
-        <img loading="lazy" decoding="async" src="/images/incense.jpg" alt="LA Scenting — the art of scent">
+      <div class="img-box reveal" style="aspect-ratio: 4/5; overflow: hidden;">
+        <img loading="lazy" decoding="async" src="/images/aaliyah-portrait.jpg" alt="Aaliyah Hamdoon — Founder, LA Scenting" style="object-position: center top;">
       </div>
       <div class="reveal rd1">
         <span class="s-label">The Founder</span>
         <h2 class="s-title" style="margin-bottom: 20px;">Aaliyah Hamdoon</h2>
         <p class="s-note" style="margin-bottom: 24px;">"We create a silent logo — an olfactory identity that speaks without words and forms instant, lasting connections."</p>
-        <p class="s-body" style="margin-bottom: 18px;">With 18 years of industry experience, Aaliyah brings a nuanced understanding of how scent shapes memory, behaviour and perception. Together with her team, she designs environments and experiential events that stir the body, soul and mind into meaningful action.</p>
-        <p class="s-body">Her portfolio includes serving as the official scent curator and designer for Changi Airport Singapore. From corporate to retail, functional to artistic, LA Scenting encodes a distinct perception of every brand — unlocking an atmosphere that elevates each experience.</p>
+        <p class="s-body" style="margin-bottom: 18px;">With 18 years of industry experience, Aaliyah brings a nuanced understanding of how scent shapes memory, behaviour and perception. An aromachologist and creative director by discipline, she designs environments and experiential events that stir the body, soul and mind into meaningful action.</p>
+        <p class="s-body">Her portfolio includes serving as the official scent curator and designer for Changi Airport Singapore — the world's most awarded international gateway — as well as engagements spanning luxury hospitality, retail, real estate, and global corporate brands. From corporate to artistic, every LA Scenting project encodes a distinct perception of the brand it serves.</p>
         <div style="margin-top: 32px;">
-          <a href="#" class="btn btn-light">Request a Consultation <span style="font-size:1.1em">→</span></a>
+          <a href="/contact" class="btn btn-light">Request a Consultation <span style="font-size:1.1em">→</span></a>
         </div>
       </div>
     </div>
@@ -114,15 +120,15 @@ import Nav from '../components/Nav.astro';
 <section class="section-wrap" style="background: var(--cream); padding-top: 72px; padding-bottom: 72px;">
   <div class="inner" style="max-width: var(--max-w); margin: 0 auto; text-align: center;">
     <span class="s-label reveal" style="margin-bottom: 36px;">Trusted By</span>
-    <div class="reveal rd1" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 28px 56px; margin-top: 8px;">
-      <span class="client-name">Changi Airport</span>
-      <span class="client-name">Audi</span>
-      <span class="client-name">CapitaLand</span>
-      <span class="client-name">CBRE</span>
-      <span class="client-name">Microsoft</span>
-      <span class="client-name">Samsung</span>
-      <span class="client-name">Tempur</span>
-      <span class="client-name">Alila</span>
+    <div class="reveal rd1 client-logo-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 48px; justify-items: center; align-items: center; margin-top: 8px;">
+      <img src="/images/clients/changi.png" alt="Changi Airport" loading="lazy" style="height: 72px; width: auto; max-width: 260px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
+      <img src="/images/clients/audi.png" alt="Audi" loading="lazy" style="height: 72px; width: auto; max-width: 260px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
+      <img src="/images/clients/capitaland.svg" alt="CapitaLand" loading="lazy" style="height: 72px; width: auto; max-width: 260px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
+      <img src="/images/clients/cbre.png" alt="CBRE" loading="lazy" style="height: 36px; width: auto; max-width: 130px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
+      <img src="/images/clients/microsoft.svg" alt="Microsoft" loading="lazy" style="height: 36px; width: auto; max-width: 130px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
+      <img src="/images/clients/samsung.svg" alt="Samsung" loading="lazy" style="height: 36px; width: auto; max-width: 130px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
+      <img src="/images/clients/tempur.png" alt="Tempur" loading="lazy" style="height: 36px; width: auto; max-width: 130px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
+      <img src="/images/clients/alila.png" alt="Alila Hotels" loading="lazy" style="height: 36px; width: auto; max-width: 130px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
     </div>
   </div>
 </section>
@@ -140,44 +146,6 @@ import Nav from '../components/Nav.astro';
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="main-footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo-mark"><span class="la">LA</span>SCENTING</div>
-      <p class="footer-tagline">Scent architecture for extraordinary spaces.<br>Now serving Southeast Asia.</p>
-    </div>
-    <div>
-      <span class="footer-col-label">Navigate</span>
-      <ul class="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/philosophy">Philosophy</a></li>
-        <li><a href="/services">Services &amp; Products</a></li>
-        <li><a href="/journal">The Journal</a></li>
-      </ul>
-    </div>
-    <div>
-      <span class="footer-col-label">Company</span>
-      <ul class="footer-links">
-        <li><a href="#">Motion Sensory</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Sustainability</a></li>
-      </ul>
-    </div>
-    <div>
-      <span class="footer-col-label">Connect</span>
-      <ul class="footer-links">
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2024 LA Scenting. All rights reserved.</p>
-    <p class="footer-copy">Scent Architecture · Southeast Asia</p>
-  </div>
-</footer>
-
+<Footer />
 <script src="/app.js" is:inline></script>
 </Base>

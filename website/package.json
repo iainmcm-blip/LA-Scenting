@@ -9,10 +9,18 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@astrojs/react": "^5.0.7",
+    "@react-three/fiber": "^9.6.1",
+    "@shadergradient/react": "^2.4.20",
     "astro": "^5.0.0",
+    "camera-controls": "^3.1.2",
     "gsap": "^3.13.0",
     "lenis": "^1.1.0",
-    "ogl": "^1.0.0"
+    "ogl": "^1.0.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "three": "^0.184.0",
+    "three-stdlib": "^2.36.1"
   },
   "devDependencies": {
     "typescript": "^5.5.0",

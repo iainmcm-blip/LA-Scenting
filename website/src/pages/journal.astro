@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 ---
 <Base title="The Journal — LA Scenting" description="Insights on scent architecture, olfactory branding, hospitality design, and the science of sensory experience from LA Scenting.">
   <Nav />
@@ -249,44 +250,7 @@ import Nav from '../components/Nav.astro';
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="main-footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo-mark"><span class="la">LA</span>SCENTING</div>
-      <p class="footer-tagline">Scent architecture for extraordinary spaces.<br>Now serving Southeast Asia.</p>
-    </div>
-    <div>
-      <span class="footer-col-label">Navigate</span>
-      <ul class="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/philosophy">Philosophy</a></li>
-        <li><a href="/services">Services &amp; Products</a></li>
-        <li><a href="/journal">The Journal</a></li>
-      </ul>
-    </div>
-    <div>
-      <span class="footer-col-label">Company</span>
-      <ul class="footer-links">
-        <li><a href="#">Motion Sensory</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Sustainability</a></li>
-      </ul>
-    </div>
-    <div>
-      <span class="footer-col-label">Connect</span>
-      <ul class="footer-links">
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2024 LA Scenting. All rights reserved.</p>
-    <p class="footer-copy">Scent Architecture · Southeast Asia</p>
-  </div>
-</footer>
+<Footer />
 
 <script is:inline>
   function filterArticles(btn, cat) {

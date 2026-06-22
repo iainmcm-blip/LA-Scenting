@@ -1,13 +1,77 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 import HeroHaze from '../components/HeroHaze.astro';
 import PillarScroll from '../components/PillarScroll.astro';
 import ProcessTrack from '../components/ProcessTrack.astro';
-import WarpImage from '../components/WarpImage.astro';
 ---
 <Base title="LA Scenting — Scent Architecture for Extraordinary Spaces" description="LA Scenting designs immersive scent identities that shape emotion, behaviour and brand memory. Scent architecture for extraordinary spaces across Southeast Asia.">
   <Nav />
+
+<style>
+  .logo-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 48px;
+    justify-items: center;
+    align-items: center;
+  }
+  .logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+  }
+  .logo-item img {
+    height: 36px;
+    width: auto;
+    max-width: 130px;
+    object-fit: contain;
+    filter: grayscale(1) opacity(0.42);
+    transition: filter 0.3s;
+    mix-blend-mode: multiply;
+  }
+  .logo-item img:hover {
+    filter: grayscale(0.4) opacity(0.65);
+  }
+  .cs-stat-row {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(45,45,35,0.08);
+    flex-wrap: wrap;
+  }
+  .cs-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cs-stat-num {
+    font-family: var(--font-note);
+    font-style: italic;
+    font-size: 1.9rem;
+    color: var(--sand);
+    line-height: 1;
+  }
+  .cs-stat-label {
+    font-family: var(--font-head);
+    font-size: 0.54rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(45,45,35,0.42);
+  }
+  @media (max-width: 900px) {
+    .logo-bar { grid-template-columns: repeat(4, 1fr); gap: 24px 32px; }
+  }
+  @media (max-width: 600px) {
+    .logo-bar { grid-template-columns: repeat(2, 1fr); gap: 20px 24px; }
+    .logo-item img { height: 40px !important; max-width: 140px !important; }
+    .cs-stat-row { gap: 20px; }
+  }
+</style>
 
 <!-- HERO -->
 <section class="hero" transition:name="hero">
@@ -62,39 +126,88 @@ import WarpImage from '../components/WarpImage.astro';
       <h2 class="s-title">Spaces That Leave<br>An Impression</h2>
     </div>
 
-    <!-- Case Study 1 -->
+    <!-- Case Study 1 — Changi Airport -->
     <div class="case-study reveal">
-      <div class="img-box cs-img" style="aspect-ratio: 4/3; position: relative;">
-        <WarpImage src="/images/changi.jpg" alt="Changi Airport Singapore" class="fill" />
-        <span class="cs-tag">Hospitality</span>
+      <div class="img-box cs-img" style="position: relative;">
+        <img loading="lazy" decoding="async" src="/images/changi.jpg" alt="Changi Airport Singapore">
+        <span class="cs-tag">Airports &amp; Transit Hubs</span>
       </div>
       <div>
         <p class="cs-num">01 / Case Study</p>
         <p class="cs-project">Changi Airport Singapore</p>
         <h3 class="cs-title">Flagship Sensory<br>Identity Programme</h3>
         <div class="rule"></div>
-        <p class="s-body">As the official scent curator and designer for Changi Airport Singapore, we wove a signature olfactory identity throughout the terminal experience — from arrivals to departure lounges. The brief: make the world's award-winning gateway unforgettable not just to the eye, but to memory itself.</p>
+        <p class="s-body">As the official scent curator and designer for Changi Airport Singapore — the world's most awarded international gateway — we wove the 'Orchid Tea' signature identity across terminal zones handling over 3,000 passengers per hour. A carefully calibrated olfactory environment that reduced perceived stress by 40% and increased retail dwell time by up to 20%.</p>
+        <div class="cs-stat-row">
+          <div class="cs-stat">
+            <span class="cs-stat-num">40%</span>
+            <span class="cs-stat-label">Stress Reduction</span>
+          </div>
+          <div class="cs-stat">
+            <span class="cs-stat-num">20%</span>
+            <span class="cs-stat-label">Retail Dwell Increase</span>
+          </div>
+          <div class="cs-stat">
+            <span class="cs-stat-num">3K+</span>
+            <span class="cs-stat-label">Pax Per Hour</span>
+          </div>
+        </div>
         <div style="margin-top: 28px;">
-          <a href="/about-us" class="btn-link">View Project <span>→</span></a>
+          <a href="/case-studies/changi-airport" class="btn-link">View Project <span>→</span></a>
         </div>
       </div>
     </div>
 
-    <!-- Case Study 2 -->
+    <!-- Case Study 2 — Singapore Airshow -->
     <div class="case-study reverse reveal">
-      <div class="img-box cs-img" style="aspect-ratio: 4/3; position: relative;">
-        <WarpImage src="/images/staircase.jpg" alt="Bespoke Hotel Scent Environment" class="fill" />
-        <span class="cs-tag">Luxury Hospitality</span>
+      <div class="img-box cs-img" style="position: relative;">
+        <img loading="lazy" decoding="async" src="/images/vials-landscape.png" alt="Singapore Airshow Multi-Sensory Activation" style="object-position: center center;">
+        <span class="cs-tag">Aerospace &amp; Events</span>
       </div>
       <div>
         <p class="cs-num">02 / Case Study</p>
-        <p class="cs-project">Bespoke Hotel Collection</p>
-        <h3 class="cs-title">Molecular Precision<br>at Architectural Scale</h3>
+        <p class="cs-project">Singapore Airshow</p>
+        <h3 class="cs-title">Precision Meets<br>Sensation</h3>
         <div class="rule"></div>
-        <p class="s-body">Patented cold-air nebulization preserves the therapeutic properties of our signature oils without heat or dilution — delivering seamless HVAC connectivity or standalone sculptural units designed to disappear into high-end interiors.</p>
+        <p class="s-body">Asia's largest aerospace and defence exhibition demanded a sensory experience equal to its ambition. We designed a bespoke multi-sensory activation across exhibition halls and VIP suites — a signature scent that married the clarity of altitude, the warmth of innovation, and the quiet authority of precision engineering.</p>
         <div style="margin-top: 28px;">
-          <a href="/services" class="btn-link">Our Services <span>→</span></a>
+          <a href="/case-studies/singapore-airshow" class="btn-link">View Project <span>→</span></a>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED BY — Client Logo Bar -->
+<section class="section-wrap" style="background: var(--cream); padding-top: 64px; padding-bottom: 64px;">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="reveal" style="text-align: center; margin-bottom: 40px;">
+      <span class="s-label">Trusted By</span>
+    </div>
+    <div class="logo-bar reveal rd1">
+      <div class="logo-item">
+        <img src="/images/clients/changi.png" alt="Changi Airport" loading="lazy" style="height: 72px; max-width: 260px;">
+      </div>
+      <div class="logo-item">
+        <img src="/images/clients/audi.png" alt="Audi" loading="lazy" style="height: 72px; max-width: 260px;">
+      </div>
+      <div class="logo-item">
+        <img src="/images/clients/capitaland.svg" alt="CapitaLand" loading="lazy" style="height: 72px; max-width: 260px;">
+      </div>
+      <div class="logo-item">
+        <img src="/images/clients/cbre.png" alt="CBRE" loading="lazy">
+      </div>
+      <div class="logo-item">
+        <img src="/images/clients/microsoft.svg" alt="Microsoft" loading="lazy">
+      </div>
+      <div class="logo-item">
+        <img src="/images/clients/samsung.svg" alt="Samsung" loading="lazy">
+      </div>
+      <div class="logo-item">
+        <img src="/images/clients/tempur.png" alt="Tempur" loading="lazy">
+      </div>
+      <div class="logo-item">
+        <img src="/images/clients/alila.png" alt="Alila Hotels" loading="lazy">
       </div>
     </div>
   </div>
@@ -194,49 +307,7 @@ import WarpImage from '../components/WarpImage.astro';
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="main-footer">
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo-mark"><span class="la">LA</span>SCENTING</div>
-      <p class="footer-tagline">Scent architecture for extraordinary spaces.<br>Now serving Southeast Asia.</p>
-    </div>
-    <div>
-      <span class="footer-col-label">Navigate</span>
-      <ul class="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/philosophy">Philosophy</a></li>
-        <li><a href="/services">Services &amp; Products</a></li>
-        <li><a href="/journal">The Journal</a></li>
-      </ul>
-    </div>
-    <div>
-      <span class="footer-col-label">Company</span>
-      <ul class="footer-links">
-        <li><a href="#">Motion Sensory</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Sustainability</a></li>
-      </ul>
-    </div>
-    <div>
-      <span class="footer-col-label">Connect</span>
-      <ul class="footer-links">
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2024 LA Scenting. All rights reserved.</p>
-    <p class="footer-copy">Scent Architecture · Southeast Asia</p>
-  </div>
-</footer>
+<Footer />
 
 <script src="/app.js" is:inline></script>
-
-<script>
-  import { initScroll } from '../lib/scroll';
-  document.addEventListener('astro:page-load', () => { initScroll(); });
-</script>
 </Base>

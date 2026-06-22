@@ -27,7 +27,7 @@ const pillars = [
     const items = Array.from(section.querySelectorAll<HTMLElement>('.pillar'));
     if (!items.length) return;
 
-    if (detectTier() === 'reduced') {
+    if (detectTier() !== 'full') {
       items.forEach(el => {
         el.style.opacity = '1';
         el.style.transform = 'none';
@@ -44,7 +44,7 @@ const pillars = [
     ScrollTrigger.create({
       trigger: section,
       start: 'top top',
-      end: '+=' + (items.length * 100) + '%',
+      end: '+=' + (items.length * 60) + '%',
       pin: true,
       scrub: true,
       onUpdate: (self) => {

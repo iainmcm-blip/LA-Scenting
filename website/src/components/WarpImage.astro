@@ -38,7 +38,7 @@ const { src, alt, class: cls = '' } = Astro.props;
 </script>
 
 <style>
-  .warp { position: relative; overflow: hidden; }
+  .warp { position: relative; overflow: hidden; margin: 0; }
   .warp-canvas { display: none; position: absolute; inset: 0; width: 100%; height: 100%; }
   .warp-img { display: block; width: 100%; height: 100%; object-fit: cover; }
   /* When placed inside a positioned container (e.g. .img-box), use class="fill" */

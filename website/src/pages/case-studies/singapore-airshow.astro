@@ -1,0 +1,267 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import PageHaze from '../../components/PageHaze.astro';
+---
+<Base title="Singapore Airshow — LA Scenting Case Study" description="How LA Scenting created a bespoke multi-sensory activation for Asia's largest aerospace and defence exhibition.">
+  <Nav />
+
+<style>
+  .cs-hero {
+    position: relative;
+    height: 80vh;
+    min-height: 520px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+  .cs-hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .cs-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .cs-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(45,45,35,0.15) 0%, rgba(20,20,15,0.85) 100%);
+  }
+  .cs-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 var(--gutter) 72px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .cs-meta-bar {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-top: 64px;
+    padding: 48px 0;
+    border-top: 1px solid rgba(45,45,35,0.08);
+    border-bottom: 1px solid rgba(45,45,35,0.08);
+  }
+  .cs-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cs-meta-label {
+    font-family: var(--font-head);
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(45,45,35,0.4);
+  }
+  .cs-meta-value {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--olive);
+  }
+  .cs-body-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .delivery-list {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .delivery-list li {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(45,45,35,0.07);
+  }
+  .delivery-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .dl-num {
+    font-family: var(--font-note);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--sand);
+    flex-shrink: 0;
+    line-height: 1.2;
+    opacity: 0.7;
+  }
+  .dl-title {
+    font-family: var(--font-head);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--olive);
+    margin-bottom: 6px;
+  }
+  @media (max-width: 900px) {
+    .cs-body-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  @media (max-width: 600px) {
+    .cs-meta-bar { gap: 24px; }
+    .cs-hero-content { padding-bottom: 48px; }
+  }
+</style>
+
+<!-- HERO -->
+<section class="cs-hero" style="padding-top: var(--nav-h);">
+  <div class="cs-hero-bg">
+    <img loading="eager" decoding="async" src="/images/fragrance-vials-dark.jpg" alt="Singapore Airshow — LA Scenting Multi-Sensory Activation">
+  </div>
+  <div class="cs-hero-overlay"></div>
+  <PageHaze />
+  <div class="cs-hero-content">
+    <span class="s-label" style="color: rgba(201,175,128,0.6); margin-bottom: 16px;">Case Study · 02</span>
+    <h1 style="font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cream); line-height: 1.1; max-width: 640px;">Singapore Airshow</h1>
+    <p style="font-family: var(--font-note); font-style: italic; font-size: clamp(1rem, 2vw, 1.3rem); color: rgba(237,233,223,0.65); margin-top: 16px;">Precision Meets Sensation</p>
+  </div>
+</section>
+
+<!-- META BAR -->
+<section style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="cs-meta-bar reveal">
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Event</span>
+        <span class="cs-meta-value">Singapore Airshow</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Sector</span>
+        <span class="cs-meta-value">Aerospace &amp; Defence · Events</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Scope</span>
+        <span class="cs-meta-value">Multi-Sensory Activation · VIP Suites · Exhibition Halls</span>
+      </div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Location</span>
+        <span class="cs-meta-value">Changi Exhibition Centre · Singapore</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE BRIEF -->
+<section class="section-wrap" style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="cs-body-grid">
+      <div class="reveal">
+        <span class="s-label">The Brief</span>
+        <h2 class="s-title" style="margin-bottom: 28px;">Where Precision<br>Becomes an Experience</h2>
+        <p class="s-body" style="margin-bottom: 20px;">The Singapore Airshow is Asia's largest aerospace and defence exhibition — a biennial event that convenes the world's leading aviation and defence organisations, attracting heads of state, industry leaders, and over 50,000 trade visitors across its run. It is, by any measure, a gathering of extraordinary ambition.</p>
+        <p class="s-body" style="margin-bottom: 20px;">The challenge was to match that ambition in the sensory register. Exhibition halls and networking suites had long been defined by their visual and architectural language — but no one had yet considered what they should feel like, or what they should smell like. That was the brief LA Scenting received.</p>
+        <p class="s-body">The requirement was for a bespoke multi-sensory activation that would elevate the event experience across exhibition halls, VIP hospitality suites, and strategic networking spaces — something that would be felt rather than noticed, and remembered long after the show was over.</p>
+      </div>
+      <div class="reveal rd1">
+        <div class="img-box" style="aspect-ratio: 3/4; margin-bottom: 32px;">
+          <img loading="lazy" decoding="async" src="/images/oil-bottle-dark.jpg" alt="Precision fragrance composition for Singapore Airshow">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE DESIGN -->
+<section class="section-wrap" style="background: var(--olive);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="cs-body-grid">
+      <div class="reveal" style="display: flex; flex-direction: column; justify-content: center;">
+        <span class="s-label" style="color: rgba(201,175,128,0.5);">The Sensory Design</span>
+        <h2 class="s-title-lg" style="color: var(--cream); margin-bottom: 24px;">Altitude, Innovation,<br>Authority.</h2>
+        <p class="s-note" style="color: rgba(237,233,223,0.6); margin-bottom: 24px; font-size: clamp(0.9rem, 1.6vw, 1.1rem);">"In aerospace, precision is not a virtue — it is the minimum requirement. We brought the same standard to scent."</p>
+        <p class="s-body" style="color: rgba(237,233,223,0.5); margin-bottom: 20px;">The signature composition was built across three olfactory registers: the clean, crystalline freshness of altitude — cool ozonic notes that evoke the rarified air of flight; the warmth of innovation — smoky vetiver and cedar that suggest precision engineering and crafted metal; and a deep, authoritative base of oud and amber that commands respect and signals quiet prestige.</p>
+        <p class="s-body" style="color: rgba(237,233,223,0.5);">The blend was calibrated differently across zones — lighter and more energising in the main exhibition halls, deeper and more intimate in VIP suites, where conversations would have strategic consequence.</p>
+      </div>
+      <div class="reveal rd1">
+        <div class="img-box" style="aspect-ratio: 3/4;">
+          <img loading="lazy" decoding="async" src="/images/bottles-motion.jpg" alt="Bespoke scent composition — Singapore Airshow activation">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE DELIVERY -->
+<section class="section-wrap" style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="cs-body-grid">
+      <div class="reveal" style="max-width: 540px;">
+        <span class="s-label">The Delivery</span>
+        <h2 class="s-title" style="margin-bottom: 20px;">Four Touchpoints.<br>One Signature.</h2>
+        <p class="s-body">Every element of the sensory activation was designed to reinforce the same emotional register — authority, precision, and the particular excitement of innovation at scale. Delivery was engineered to disappear into the architecture, present everywhere but visible nowhere.</p>
+        <ul class="delivery-list">
+          <li>
+            <span class="dl-num">01</span>
+            <div>
+              <div class="dl-title">Exhibition Hall Diffusion</div>
+              <p class="s-body" style="font-size: 0.85rem;">Large-format cold-air nebulization across the main halls — calibrated for the acoustic and atmospheric conditions of a vast public exhibition space, maintaining presence without overpowering.</p>
+            </div>
+          </li>
+          <li>
+            <span class="dl-num">02</span>
+            <div>
+              <div class="dl-title">VIP Suite Activation</div>
+              <p class="s-body" style="font-size: 0.85rem;">Bespoke sculptural diffusion units for hospitality suites and private meeting rooms — a deeper, more intimate expression of the signature designed for small-group environments and high-stakes dialogue.</p>
+            </div>
+          </li>
+          <li>
+            <span class="dl-num">03</span>
+            <div>
+              <div class="dl-title">Gifting Collection</div>
+              <p class="s-body" style="font-size: 0.85rem;">A curated scent gifting range — candles and fragrance oils in commissioned packaging — commissioned for VIP delegate welcome packs and sponsor hospitality gifting.</p>
+            </div>
+          </li>
+          <li>
+            <span class="dl-num">04</span>
+            <div>
+              <div class="dl-title">On-Site Consultation</div>
+              <p class="s-body" style="font-size: 0.85rem;">LA Scenting was on-site throughout the event to monitor diffusion performance, adjust calibration in response to live conditions, and ensure the sensory environment remained precisely as designed.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="reveal rd1">
+        <div class="img-box" style="aspect-ratio: 4/5;">
+          <img loading="lazy" decoding="async" src="/images/amber-bottles-stacked.jpg" alt="LA Scenting compositions for Singapore Airshow">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section class="section-wrap quote-bg">
+  <div class="quote-inner reveal">
+    <blockquote>"Aerospace is the highest expression of human precision. We designed a scent experience worthy of the ambition in the room."</blockquote>
+    <p class="quote-attr">Aaliyah Hamdoon · Founder, LA Scenting</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-wrap newsletter-bg">
+  <div style="max-width: 600px; margin: 0 auto; text-align: center;" class="reveal">
+    <span class="s-label" style="color: rgba(201,175,128,0.5);">Work with Us</span>
+    <h2 style="font-family: var(--font-head); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--cream); margin-bottom: 16px; line-height: 1.2;">Your Event Deserves<br>a Sensory Signature.</h2>
+    <p class="s-body" style="color: rgba(237,233,223,0.45); margin-bottom: 40px;">We work with a select number of clients each season. Tell us about your project and we will be in touch within 48 hours.</p>
+    <a href="/contact" class="btn btn-sand">Request a Consultation <span style="font-size:1.1em">→</span></a>
+  </div>
+</section>
+
+<Footer />
+<script src="/app.js" is:inline></script>
+</Base>
