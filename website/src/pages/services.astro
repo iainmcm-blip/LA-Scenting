@@ -123,20 +123,26 @@ const pillars = [
     grid-template-columns: 1fr 1fr;
     min-height: 480px;
   }
-  /* Six advisory pillars */
-  .pillar-row {
+  /* Six advisory pillars — accordion */
+  .pillar { border-top: 1px solid rgba(45,45,35,0.12); }
+  .pillar:last-of-type { border-bottom: 1px solid rgba(45,45,35,0.12); }
+  .pillar summary {
+    list-style: none;
+    cursor: pointer;
     display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 48px;
-    padding: 48px 0;
-    border-top: 1px solid rgba(45,45,35,0.12);
-    align-items: start;
+    grid-template-columns: 200px 1fr auto;
+    grid-template-areas: "idx name chev";
+    gap: 24px 48px;
+    align-items: center;
+    padding: 34px 0;
   }
-  .pillar-row:last-child { border-bottom: 1px solid rgba(45,45,35,0.12); }
+  .pillar summary::-webkit-details-marker { display: none; }
+  .pillar summary:focus-visible { outline: 2px solid var(--sand); outline-offset: 4px; }
+  .pillar-sum-idx { grid-area: idx; display: flex; flex-direction: column; gap: 10px; }
   .pillar-index {
     font-family: var(--font-note);
     font-style: italic;
-    font-size: 3.6rem;
+    font-size: 2.8rem;
     font-weight: 300;
     color: var(--sand);
     line-height: 0.9;
@@ -148,15 +154,26 @@ const pillars = [
     text-transform: uppercase;
     letter-spacing: 0.16em;
     color: rgba(45,45,35,0.4);
-    margin-top: 12px;
   }
   .pillar-name {
+    grid-area: name;
     font-family: var(--font-head);
     font-size: clamp(1.2rem, 2.2vw, 1.6rem);
     font-weight: 700;
     letter-spacing: 0.01em;
-    margin-bottom: 16px;
+    margin: 0;
+    transition: color 0.3s;
   }
+  .pillar[open] .pillar-name { color: var(--sand); }
+  .pillar-chev { grid-area: chev; position: relative; width: 16px; height: 16px; flex-shrink: 0; }
+  .pillar-chev::before, .pillar-chev::after {
+    content: ''; position: absolute; background: var(--sand);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .pillar-chev::before { top: 7px; left: 0; width: 16px; height: 2px; }
+  .pillar-chev::after { top: 0; left: 7px; width: 2px; height: 16px; }
+  .pillar[open] .pillar-chev::after { opacity: 0; transform: scaleY(0); }
+  .pillar-body { padding: 0 0 44px 248px; max-width: 920px; }
   .pillar-meta {
     display: flex;
     flex-wrap: wrap;
@@ -183,8 +200,15 @@ const pillars = [
   }
   @media (max-width: 768px) {
     .editorial-break { grid-template-columns: 1fr; }
-    .pillar-row { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
-    .pillar-index { font-size: 2.8rem; }
+    .pillar summary {
+      grid-template-columns: 1fr auto;
+      grid-template-areas: "idx chev" "name name";
+      gap: 12px 16px;
+      padding: 26px 0;
+    }
+    .pillar-sum-idx { flex-direction: row; align-items: baseline; gap: 14px; }
+    .pillar-index { font-size: 2.1rem; }
+    .pillar-body { padding-left: 0; padding-bottom: 32px; }
   }
 </style>
 
@@ -241,13 +265,16 @@ const pillars = [
       <p class="s-body" style="font-size: 1rem;">Engage one pillar or the full sequence. Each stands alone; together they cover everything from the first creative brief to the scent still performing two years on.</p>
     </div>
     {pillars.map((p) => (
-      <div class="pillar-row reveal" id={p.num === '03' ? 'pillar-03' : undefined}>
-        <div>
-          <div class="pillar-index">{p.num}</div>
-          <p class="pillar-cat">{p.category}</p>
-        </div>
-        <div>
+      <details class="pillar reveal">
+        <summary>
+          <span class="pillar-sum-idx">
+            <span class="pillar-index">{p.num}</span>
+            <span class="pillar-cat">{p.category}</span>
+          </span>
           <h3 class="pillar-name">{p.name}</h3>
+          <span class="pillar-chev" aria-hidden="true"></span>
+        </summary>
+        <div class="pillar-body">
           <p class="s-body" style="font-size: 0.95rem;">{p.body}</p>
           <div class="pillar-meta">
             <div class="pillar-meta-item">
@@ -265,7 +292,7 @@ const pillars = [
             </div>
           )}
         </div>
-      </div>
+      </details>
     ))}
   </div>
 </section>
