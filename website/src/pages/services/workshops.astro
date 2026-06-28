@@ -1,0 +1,268 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import PageHaze from '../../components/PageHaze.astro';
+
+const overview = [
+  { key: 'A', name: 'Scent & Self', meta: '3 hrs · 2 creations', desc: 'An emotional, intuitive journey — reconnecting with yourself through scent and memory.' },
+  { key: 'B', name: 'Fundamentals of Fragrance & Formulation', meta: '2–3 hrs · 2 creations', desc: 'The craft behind the bottle — olfactory training, raw materials, and structured blending.' },
+  { key: 'C', name: 'Five Core Fragrance Notes', meta: '45 mins · 1 creation', desc: 'Bite-sized sessions exploring one fragrance category at a time, from citrus to warm base.' },
+];
+
+const workshopA = [
+  { n: '01', t: 'Arrival & grounding', d: 'A calm, welcoming space and a short grounding moment to arrive fully.' },
+  { n: '02', t: 'The emotional language of scent', d: 'How fragrance speaks to the brain, memory, and emotion.' },
+  { n: '03', t: 'Guided scent encounters', d: 'A curated palette met slowly, intentionally, non-verbally.' },
+  { n: '04', t: 'Intention setting', d: '“What do I want this scent to support in my life?”' },
+  { n: '05', t: 'Intuitive formulation', d: 'Blending led by emotion rather than rules.' },
+  { n: '06', t: 'Anchoring & meaning', d: 'Giving the finished fragrance personal significance.' },
+  { n: '07', t: 'Closing & integration', d: 'Reflection and embodiment before you leave.' },
+];
+
+const workshopB = [
+  { n: '01', t: 'Introduction to perfumery', d: 'Evolution of perfumery; oils, accords, safety, dilution & IFRA.' },
+  { n: '02', t: 'Olfactory training & scent families', d: 'The pyramid — top, heart, base — families, volatility & longevity.' },
+  { n: '03', t: 'Raw materials & ingredients', d: 'Naturals vs synthetics — purpose, stability & performance.' },
+  { n: '04', t: 'Fragrance construction & ratios', d: 'Balance and harmony; top/heart/base ratios and fixatives.' },
+  { n: '05', t: 'Psychology of scent & application', d: 'Mood and memory; scent marketing across environments.' },
+  { n: '06', t: 'Guided formulation & blending', d: 'Measure, blend, adjust, and refine with professional tools.' },
+];
+
+const families = [
+  { t: 'Citrus / Fresh', note: 'Clarity, uplift, first impression', ex: 'Bergamot, grapefruit, lemon' },
+  { t: 'Aromatic / Green', note: 'Balance, focus, natural freshness', ex: 'Eucalyptus, herbs, tea notes' },
+  { t: 'Floral / Soft Heart', note: 'Emotion, comfort, connection', ex: 'Jasmine, rose, neroli' },
+  { t: 'Woody', note: 'Grounding, structure, longevity', ex: 'Cedarwood, sandalwood, birch' },
+  { t: 'Warm / Fixative Base', note: 'Depth, diffusion, lasting power', ex: 'Amber, musk-style accords, resins' },
+];
+---
+<Base title="Workshops & Events — LA Scenting" description="Interactive scent workshops and live Fragrance Activations from LA Scenting. From intuitive self-discovery to technical mastery — every participant blends and bottles their own fragrance.">
+  <Nav />
+
+<style>
+  .ws-overview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .ws-ov-card {
+    background: var(--cream);
+    border: 1px solid rgba(45,45,35,0.12);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .ws-ov-letter {
+    font-family: var(--font-note);
+    font-style: italic;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--sand);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .ws-ov-meta {
+    font-family: var(--font-note);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--olive-md);
+    margin-bottom: 14px;
+  }
+  .ws-module {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(45,45,35,0.08);
+    align-items: baseline;
+  }
+  .ws-module:last-child { border-bottom: none; }
+  .ws-module-num {
+    font-family: var(--font-note);
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--sand);
+  }
+  .ws-module-t {
+    font-family: var(--font-head);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 5px;
+  }
+  .family-row {
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr;
+    gap: 24px;
+    padding: 22px 0;
+    border-top: 1px solid rgba(237,233,223,0.1);
+    align-items: baseline;
+  }
+  .family-row:last-child { border-bottom: 1px solid rgba(237,233,223,0.1); }
+  .family-name {
+    font-family: var(--font-head);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+  }
+  .family-note { font-family: var(--font-note); font-style: italic; font-size: 1rem; color: rgba(201,175,128,0.75); }
+  .family-ex { font-family: var(--font-note); font-style: italic; font-size: 0.95rem; color: rgba(237,233,223,0.45); }
+  @media (max-width: 860px) {
+    .ws-overview { grid-template-columns: 1fr; }
+    .family-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img decoding="async" src="/images/incense.jpg" alt="LA Scenting Interactive Scent Workshops" style="width: 100%; height: 100%; object-fit: cover;">
+  </div>
+  <div class="page-hero-overlay"></div>
+  <PageHaze />
+  <div class="page-hero-content">
+    <span class="hero-eyebrow">Interactive Scent Workshops</span>
+    <h1 class="hero-title">Your Story.<br>Your Scent.</h1>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section-wrap" style="background: var(--cream);">
+  <div class="inner" style="max-width: 820px; margin: 0 auto; text-align: center;">
+    <div class="reveal">
+      <span class="s-label">Experience & Education</span>
+      <h2 class="s-title" style="margin: 14px 0 22px;">Scent Bypasses Logic.<br>It Speaks to the Nervous System.</h2>
+      <p class="s-body" style="font-size: 1rem;">Hands-on sessions for brands, teams, and individuals who want to understand scent design directly — from intuitive self-discovery to technical mastery. Every participant blends and bottles their own fragrance to take home.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE THREE WORKSHOPS -->
+<section class="section-wrap" style="background: var(--cream-mid);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="reveal" style="max-width: 680px; margin-bottom: 48px;">
+      <span class="s-label">The Three Workshops</span>
+      <h2 class="s-title" style="margin-top: 14px;">A Journey Told<br>in Scent</h2>
+      <p class="s-body" style="font-size: 1rem; margin-top: 16px;">From intuitive self-discovery to technical mastery — choose the depth that fits your group.</p>
+    </div>
+    <div class="ws-overview reveal rd1">
+      {overview.map((w) => (
+        <div class="ws-ov-card">
+          <div class="ws-ov-letter">{w.key}</div>
+          <span class="s-label" style="margin-bottom: 10px;">Workshop {w.key}</span>
+          <h3 style="font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; line-height: 1.25;">{w.name}</h3>
+          <p class="ws-ov-meta">{w.meta}</p>
+          <p class="s-body" style="font-size: 0.88rem;">{w.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOP A DETAIL -->
+<section class="section-wrap" style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 72px; align-items: start;">
+      <div class="reveal" style="position: sticky; top: 110px;">
+        <span class="s-label">Workshop A</span>
+        <h2 class="s-title" style="margin: 14px 0 16px;">Scent & Self</h2>
+        <p class="ws-ov-meta" style="font-size: 1.05rem;">3 hours · 15 notes · 20ml ×2 · 2 creations</p>
+        <p class="s-body" style="margin-top: 16px;">A little bit of everything perfumery — listening, responding, and letting fragrance become an emotional anchor.</p>
+        <div class="img-box" style="aspect-ratio: 4/3; margin-top: 28px;">
+          <img loading="lazy" decoding="async" src="/images/lavender.jpg" alt="Scent & Self workshop">
+        </div>
+      </div>
+      <div class="reveal rd1">
+        {workshopA.map((m) => (
+          <div class="ws-module">
+            <span class="ws-module-num">{m.n}</span>
+            <div>
+              <p class="ws-module-t">{m.t}</p>
+              <p class="s-body" style="font-size: 0.88rem;">{m.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOP B DETAIL -->
+<section class="section-wrap" style="background: var(--cream-mid);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 72px; align-items: start;">
+      <div class="reveal">
+        {workshopB.map((m) => (
+          <div class="ws-module">
+            <span class="ws-module-num">{m.n}</span>
+            <div>
+              <p class="ws-module-t">{m.t}</p>
+              <p class="s-body" style="font-size: 0.88rem;">{m.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="reveal rd1" style="position: sticky; top: 110px;">
+        <span class="s-label">Workshop B</span>
+        <h2 class="s-title" style="margin: 14px 0 16px;">Fundamentals of<br>Fragrance & Formulation</h2>
+        <p class="ws-ov-meta" style="font-size: 1.05rem;">2–3 hours · 20ml ×2 · 2 creations</p>
+        <p class="s-body" style="margin-top: 16px;">The craft behind the bottle — structured training in raw materials, accords, and professional blending.</p>
+        <div class="img-box" style="aspect-ratio: 4/3; margin-top: 28px;">
+          <img loading="lazy" decoding="async" src="/images/vials.jpg" alt="Fundamentals of Fragrance workshop">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOP C — FIVE CORE NOTES -->
+<section class="section-wrap scale-bg">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="reveal" style="max-width: 700px; margin-bottom: 16px;">
+      <span class="s-label" style="color: rgba(201,175,128,0.5);">Workshop C</span>
+      <h2 class="s-title-lg" style="color: var(--cream); margin: 14px 0 16px;">Five Core<br>Fragrance Notes</h2>
+      <p class="s-body" style="color: rgba(237,233,223,0.55);">45 minutes · 20ml ×1 · 1 creation · shorter format. One fragrance category at a time — a fast, sensory introduction to how a perfume is built.</p>
+    </div>
+    {families.map((f) => (
+      <div class="family-row">
+        <span class="family-name">{f.t}</span>
+        <span class="family-note">{f.note}</span>
+        <span class="family-ex">{f.ex}</span>
+      </div>
+    ))}
+    <p class="s-label" style="color: rgba(201,175,128,0.5); margin-top: 36px;">Session flow</p>
+    <p class="s-body" style="color: rgba(237,233,223,0.5); margin-top: 8px;">Introduction → Olfactory evaluation → Formula framework → Blending → Finalisation</p>
+  </div>
+</section>
+
+<!-- FRAGRANCE ACTIVATIONS -->
+<section class="editorial-break" style="display: grid; grid-template-columns: 1fr 1fr; min-height: 480px;">
+  <div style="background: var(--olive); display: flex; flex-direction: column; justify-content: center; padding: 72px 64px;">
+    <span class="s-label" style="color: rgba(201,175,128,0.5);">Live Events</span>
+    <h2 class="s-title-lg" style="color: var(--cream); margin-bottom: 24px;">Fragrance<br>Activations</h2>
+    <p class="s-body" style="color: rgba(237,233,223,0.55); margin-bottom: 0;">A mobile scent bar or trolley, deployed live at your event for in-person fragrance mixology. An interactive, ad-hoc format that works as a standalone activity or a memorable take-home gift moment for guests — bringing the workshop experience straight to the floor.</p>
+  </div>
+  <div class="img-box" style="min-height: 480px;">
+    <img loading="lazy" decoding="async" src="/images/oil.jpg" alt="LA Scenting Fragrance Activations mobile scent bar">
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-wrap newsletter-bg">
+  <div style="max-width: 640px; margin: 0 auto; text-align: center;" class="reveal">
+    <span class="s-label" style="color: rgba(201,175,128,0.5);">Book a Session</span>
+    <h2 style="font-family: var(--font-head); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--cream); margin-bottom: 16px;">Bring Scent to Your Team or Event</h2>
+    <p class="s-body" style="color: rgba(237,233,223,0.45); margin-bottom: 40px;">Tell us your group size, setting, and the experience you have in mind. We will tailor the format to fit.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="/contact" class="btn btn-sand">Enquire Now <span style="font-size:1.1em">→</span></a>
+      <a href="/services" class="btn btn-ghost">All Services <span style="font-size:1.1em">→</span></a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+<script src="/app.js" is:inline></script>
+</Base>

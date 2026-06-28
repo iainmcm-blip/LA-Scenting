@@ -3,8 +3,65 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import PageHaze from '../components/PageHaze.astro';
+
+const pillars = [
+  {
+    num: '01',
+    name: 'Fragrance Consultancy',
+    category: 'Creative & Brand',
+    body: 'The starting point for every project: understanding what a space is trying to say before any scent is chosen. Brand and spatial discovery, scent direction development, and the right olfactory profile for the space’s purpose, audience, and identity — not a pre-existing scent library.',
+    audience: 'For CMOs, brand and creative directors shaping how a space should feel.',
+    engagement: 'Project retainer · typically a 3–6 month engagement',
+    link: null,
+  },
+  {
+    num: '02',
+    name: 'Scent Architecture',
+    category: 'Technical Advisory',
+    body: 'Translating a chosen scent direction into a deployable plan across a physical space. We map airflow, zoning, ceiling height, materials, and traffic patterns to determine where and how scent should be experienced — so the fragrance behaves consistently across every area rather than competing with the environment.',
+    audience: 'For facilities managers, M&E consultants, and architects planning the build.',
+    engagement: 'Per-engagement advisory',
+    link: null,
+  },
+  {
+    num: '03',
+    name: 'Technical Mapping & Execution',
+    category: 'Delivery & QC',
+    body: 'The hands-on technical layer: selecting and specifying the right diffusion hardware across our four tiers, calculating coverage and concentration, and overseeing installation. This is where “the space decides the formula” becomes physical — the system is chosen to match the space, not the other way around.',
+    audience: 'For project managers and site teams bringing the system to life.',
+    engagement: 'Milestone-based · supervised installation',
+    link: { href: '#hardware', label: 'See the hardware' },
+  },
+  {
+    num: '04',
+    name: 'Project Management',
+    category: 'Ongoing Retainer',
+    body: 'Ongoing oversight once the system is live — calibration, scent rotation, maintenance scheduling, and quality consistency over time. A signature scent is only as good as its delivery two years on; we manage that relationship for the life of the installation, not just the install date.',
+    audience: 'For operations and brand teams holding consistency across properties.',
+    engagement: 'Monthly retainer · annual partnership',
+    link: null,
+  },
+  {
+    num: '05',
+    name: 'White Label',
+    category: 'Product & Brand Extension',
+    body: 'Our IFRA-compliant product range — ten retail-ready formats for brands who want their signature scent extended into physical, gifting, or retail products. A brand’s olfactory identity, living beyond the space itself.',
+    audience: 'For retail, hospitality, and procurement leads extending the brand.',
+    engagement: 'Per-format production · from 500 units',
+    link: { href: '/services/white-label', label: 'Explore White Label' },
+  },
+  {
+    num: '06',
+    name: 'Workshops & Events',
+    category: 'Experience & Education',
+    body: 'Hands-on sessions for brands, teams, and individuals who want to understand scent design directly — from fragrance fundamentals to brand-specific development exercises. We also deploy Fragrance Activations: a mobile scent bar for live, in-person fragrance mixology at events.',
+    audience: 'For HR, L&D, events, and marketing teams creating live experiences.',
+    engagement: 'Per session · group rates available',
+    link: { href: '/services/workshops', label: 'Explore Workshops & Events' },
+  },
+];
 ---
-<Base title="Services &amp; Products — LA Scenting" description="LA Scenting's diffusion systems and consulting services — precision scent architecture engineered for extraordinary spaces.">
+<Base title="Services &amp; Products — LA Scenting" description="Six advisory pillars — from fragrance consultancy and scent architecture to execution, ongoing management, white label products, and workshops. LA Scenting owns the whole scent ecosystem.">
   <Nav />
 
 <style>
@@ -66,8 +123,68 @@ import PageHaze from '../components/PageHaze.astro';
     grid-template-columns: 1fr 1fr;
     min-height: 480px;
   }
+  /* Six advisory pillars */
+  .pillar-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    padding: 48px 0;
+    border-top: 1px solid rgba(45,45,35,0.12);
+    align-items: start;
+  }
+  .pillar-row:last-child { border-bottom: 1px solid rgba(45,45,35,0.12); }
+  .pillar-index {
+    font-family: var(--font-note);
+    font-style: italic;
+    font-size: 3.6rem;
+    font-weight: 300;
+    color: var(--sand);
+    line-height: 0.9;
+  }
+  .pillar-cat {
+    font-family: var(--font-head);
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba(45,45,35,0.4);
+    margin-top: 12px;
+  }
+  .pillar-name {
+    font-family: var(--font-head);
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    margin-bottom: 16px;
+  }
+  .pillar-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(45,45,35,0.08);
+  }
+  .pillar-meta-item { display: flex; flex-direction: column; gap: 3px; max-width: 340px; }
+  .pillar-meta-label {
+    font-family: var(--font-head);
+    font-size: 0.52rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(45,45,35,0.38);
+  }
+  .pillar-meta-val {
+    font-family: var(--font-note);
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--olive-md);
+    line-height: 1.35;
+  }
   @media (max-width: 768px) {
     .editorial-break { grid-template-columns: 1fr; }
+    .pillar-row { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
+    .pillar-index { font-size: 2.8rem; }
   }
 </style>
 
@@ -82,7 +199,7 @@ import PageHaze from '../components/PageHaze.astro';
   <div class="page-hero-overlay"></div>
   <PageHaze />
   <div class="page-hero-content">
-    <span class="hero-eyebrow">The Method</span>
+    <span class="hero-eyebrow">Services &amp; Products</span>
     <h1 class="hero-title">The Scenting<br>Architecture</h1>
   </div>
 </section>
@@ -92,8 +209,8 @@ import PageHaze from '../components/PageHaze.astro';
   <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
     <div class="reveal method-intro" style="margin-bottom: 64px;">
       <span class="s-label" style="color: rgba(201,175,128,0.5);">The Method</span>
-      <h2 class="s-title-lg" style="color: var(--cream);">Atmosphere First.<br>Engineering Always.</h2>
-      <p class="s-body" style="color: rgba(237,233,223,0.55); margin-top: 20px; max-width: 560px; margin-left: auto; margin-right: auto;">Every LA Scenting engagement begins not with a product selection, but with a question: what should this space make someone feel? Everything that follows — the accord, the system, the calibration — is the answer to that question, engineered with precision.</p>
+      <h2 class="s-title-lg" style="color: var(--cream);">Strategy, Technology,<br>and Execution. Under One Roof.</h2>
+      <p class="s-body" style="color: rgba(237,233,223,0.55); margin-top: 20px; max-width: 580px; margin-left: auto; margin-right: auto;">Most of the industry sells you a machine, then sells you the scent to fill it. We built the opposite. Six connected pillars take a space from first brief to ongoing care — a single discipline, owned end to end, with no supplier deciding the answer for you.</p>
     </div>
     <div class="grid-3 reveal">
       <div style="text-align: center; padding: 36px 24px; border: 1px solid rgba(237,233,223,0.07);">
@@ -104,13 +221,62 @@ import PageHaze from '../components/PageHaze.astro';
       <div style="text-align: center; padding: 36px 24px; border: 1px solid rgba(237,233,223,0.07);">
         <p style="font-family: var(--font-note); font-style: italic; font-size: 1rem; color: rgba(201,175,128,0.6); margin-bottom: 12px;">Precision</p>
         <h3 style="font-family: var(--font-head); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cream); margin-bottom: 8px;">0.1 Micrometre Mist</h3>
-        <p class="s-body" style="color: rgba(237,233,223,0.4); font-size: 0.82rem;">Cold-air nebulization at 0.1 micrometre preserves the therapeutic and aromatic integrity of every molecular note — delivering a scent that performs exactly as formulated, every hour of every day.</p>
+        <p class="s-body" style="color: rgba(237,233,223,0.4); font-size: 0.82rem;">Cold-air nebulization at 0.1 micrometre preserves the therapeutic and aromatic integrity of every molecular note — a scent that performs exactly as formulated, every hour of every day.</p>
       </div>
       <div style="text-align: center; padding: 36px 24px; border: 1px solid rgba(237,233,223,0.07);">
         <p style="font-family: var(--font-note); font-style: italic; font-size: 1rem; color: rgba(201,175,128,0.6); margin-bottom: 12px;">Intelligence</p>
         <h3 style="font-family: var(--font-head); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--cream); margin-bottom: 8px;">IoT Cloud Control</h3>
         <p class="s-body" style="color: rgba(237,233,223,0.4); font-size: 0.82rem;">Manage intensity, scheduling, and diagnostics across a single property or an entire global estate from one dashboard — giving operators real-time precision without the complexity.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIX ADVISORY PILLARS -->
+<section class="section-wrap" style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="reveal" style="max-width: 720px; margin-bottom: 24px;">
+      <span class="s-label">The Advisory Model</span>
+      <h2 class="s-title" style="margin: 14px 0 18px;">Six Pillars,<br>One Ecosystem</h2>
+      <p class="s-body" style="font-size: 1rem;">Engage one pillar or the full sequence. Each stands alone; together they cover everything from the first creative brief to the scent still performing two years on.</p>
+    </div>
+    {pillars.map((p) => (
+      <div class="pillar-row reveal" id={p.num === '03' ? 'pillar-03' : undefined}>
+        <div>
+          <div class="pillar-index">{p.num}</div>
+          <p class="pillar-cat">{p.category}</p>
+        </div>
+        <div>
+          <h3 class="pillar-name">{p.name}</h3>
+          <p class="s-body" style="font-size: 0.95rem;">{p.body}</p>
+          <div class="pillar-meta">
+            <div class="pillar-meta-item">
+              <span class="pillar-meta-label">Who it's for</span>
+              <span class="pillar-meta-val">{p.audience}</span>
+            </div>
+            <div class="pillar-meta-item">
+              <span class="pillar-meta-label">Engagement</span>
+              <span class="pillar-meta-val">{p.engagement}</span>
+            </div>
+          </div>
+          {p.link && (
+            <div style="margin-top: 24px;">
+              <a href={p.link.href} class="btn-link">{p.link.label} <span>→</span></a>
+            </div>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- HARDWARE — PILLAR 03 DETAIL -->
+<section class="section-wrap" style="background: var(--cream-mid);" id="hardware">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="reveal" style="max-width: 680px; margin-bottom: 8px;">
+      <span class="s-label">Technical Mapping &amp; Execution</span>
+      <h2 class="s-title" style="margin: 14px 0 18px;">The Hardware Tiers</h2>
+      <p class="s-body" style="font-size: 1rem;">Pillar 03 made physical. The diffusion system is specified to the space — its volume, traffic, and intention — never sold ahead of it. Two of our signature systems below.</p>
     </div>
   </div>
 </section>
@@ -201,7 +367,7 @@ import PageHaze from '../components/PageHaze.astro';
   </div>
 </section>
 
-<!-- TECHNOLOGY FEATURES -->
+<!-- DEPLOYMENT EXCELLENCE -->
 <section class="section-wrap scale-bg">
   <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
     <div class="reveal" style="margin-bottom: 64px;">
@@ -223,31 +389,6 @@ import PageHaze from '../components/PageHaze.astro';
         <div class="tech-icon">⟡</div>
         <h3 style="font-family: var(--font-head); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--cream); margin-bottom: 14px;">Sustainably Pure</h3>
         <p class="s-body" style="color: rgba(237,233,223,0.45);">100% essential oil compounds. Zero heat, zero ozone generation. Healthier air, preserved molecular integrity, and a commitment to environmental responsibility built into every unit we deploy.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES (CONSULTING) -->
-<section class="section-wrap" style="background: var(--cream);">
-  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
-    <div class="reveal" style="text-align: center; margin-bottom: 56px;">
-      <span class="s-label">Our Services</span>
-      <h2 class="s-title">Beyond the Hardware</h2>
-      <p class="s-body" style="max-width: 560px; margin: 16px auto 0;">Every LA Scenting engagement is supported by our full suite of creative and strategic services — from the first brief to the final calibration and everything in between.</p>
-    </div>
-    <div class="grid-3">
-      <div class="card-light reveal">
-        <h3 class="card-h">Scent Consultancy</h3>
-        <p class="s-body">From spatial audit to live installation, our team holds every decision — fragrance briefing, diffusion architecture, system specification, and ongoing refinement. One point of contact for the entire engagement.</p>
-      </div>
-      <div class="card-light reveal rd1">
-        <h3 class="card-h">Multi-Sensory Design</h3>
-        <p class="s-body">Bespoke olfactory identities crafted to your brand's emotional language and spatial context. We work alongside your design and creative teams to ensure total sensory cohesion.</p>
-      </div>
-      <div class="card-light reveal rd2">
-        <h3 class="card-h">White &amp; Private Label</h3>
-        <p class="s-body">Commission exclusive formulations for retail, corporate gifting, or brand extensions. Your name. Our expertise. A composition the market will not find elsewhere — protected and proprietary.</p>
       </div>
     </div>
   </div>

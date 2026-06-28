@@ -1,0 +1,191 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import PageHaze from '../../components/PageHaze.astro';
+
+const formats = [
+  { num: '01', name: 'Scented Candle', desc: 'Handpoured soy & coconut wax vessels.' },
+  { num: '02', name: 'Reed Diffuser', desc: 'Long-release home fragrance, glass bottles.' },
+  { num: '03', name: 'Eau de Room Spritz', desc: 'Fine mist room fragrance, custom bottle.' },
+  { num: '04', name: 'Room Spray', desc: 'Instant ambient scenting for any space.' },
+  { num: '05', name: 'Aroma Oil', desc: 'Pure & blended oils for diffusers.' },
+  { num: '06', name: 'Car Diffuser', desc: 'Compact vent clip or card format.' },
+  { num: '07', name: 'Pillow Mist', desc: 'Calming bedtime fragrance for linen.' },
+  { num: '08', name: 'Fragrance Stone', desc: 'Ceramic diffuser, passive long-lasting scent.' },
+  { num: '09', name: '15ml Petit Spritz', desc: 'Pocket-sized personal fragrance spritz.' },
+  { num: '10', name: 'Scented Pocket Sanitiser', desc: 'Hydrating scented hand sanitiser.' },
+];
+---
+<Base title="White Label — LA Scenting" description="LA Scenting's White Label Product Collection. Ten IFRA-compliant, retail-ready formats — fully branded to your identity. Your brand. Your product. Your story.">
+  <Nav />
+
+<style>
+  .wl-card {
+    background: var(--cream);
+    border: 1px solid rgba(45,45,35,0.12);
+    border-top: 2px solid var(--sand);
+    padding: 28px 24px 30px;
+    transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+  }
+  .wl-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(45,45,35,0.1);
+  }
+  .wl-card-num {
+    font-family: var(--font-note);
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--sand);
+    line-height: 1;
+    margin-bottom: 14px;
+    opacity: 0.7;
+  }
+  .wl-card-name {
+    font-family: var(--font-head);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+  .wl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .spec-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(45,45,35,0.07);
+  }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .spec-check::after { content: '✓'; font-size: 0.65rem; color: var(--olive); font-weight: 700; }
+  .product-label {
+    font-family: var(--font-note);
+    font-style: italic;
+    font-size: 4rem; font-weight: 300;
+    color: var(--sand); line-height: 1;
+    opacity: 0.4; margin-bottom: 8px;
+  }
+  @media (max-width: 900px) { .wl-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .wl-grid { grid-template-columns: 1fr; } }
+</style>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img decoding="async" src="/images/fragrance-vials-dark.jpg" alt="LA Scenting White Label Collection" style="width: 100%; height: 100%; object-fit: cover;">
+  </div>
+  <div class="page-hero-overlay"></div>
+  <PageHaze />
+  <div class="page-hero-content">
+    <span class="hero-eyebrow">White Label · Product Collection</span>
+    <h1 class="hero-title">Your Vibe,<br>Bottled.</h1>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section-wrap" style="background: var(--cream);">
+  <div class="inner" style="max-width: 820px; margin: 0 auto; text-align: center;">
+    <div class="reveal">
+      <span class="s-label">Brand Extension</span>
+      <h2 class="s-title" style="margin: 14px 0 22px;">Your Brand. Your Product.<br>Your Story.</h2>
+      <p class="s-body" style="font-size: 1rem;">Custom-crafted fragrances, fully white-labelled to carry your identity. The White Label Collection takes a brand's signature scent beyond the space it lives in — into retail, gifting, and the everyday objects people take home. Ten formats, developed or matched to brief, produced to IFRA standards.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEN FORMATS -->
+<section class="section-wrap" style="background: var(--cream-mid);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="reveal" style="max-width: 680px; margin-bottom: 48px;">
+      <span class="s-label">Our Range</span>
+      <h2 class="s-title" style="margin-top: 14px;">Ten Formats, Fully<br>White-Labelled to Carry Your Brand</h2>
+    </div>
+    <div class="wl-grid reveal rd1">
+      {formats.map((f) => (
+        <div class="wl-card">
+          <div class="wl-card-num">{f.num}</div>
+          <h3 class="wl-card-name">{f.name}</h3>
+          <p class="s-body" style="font-size: 0.82rem;">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL HIGHLIGHT — SCENTED CANDLE -->
+<section class="section-wrap" style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+      <div class="img-box reveal" style="aspect-ratio: 4/5;">
+        <img loading="lazy" decoding="async" src="/images/amber-bottles-stacked.jpg" alt="LA Scenting white label scented candle">
+      </div>
+      <div class="reveal rd1">
+        <div class="product-label">01</div>
+        <span class="s-label">In Detail</span>
+        <h2 class="s-title" style="margin-bottom: 8px;">The Scented Candle</h2>
+        <p class="s-body" style="margin-bottom: 28px;">Handpoured in soy, coconut wax, or a premium blend. Available in glass, matte, or ceramic vessels — fully branded to your identity and occasion. A representative example of how every format in the collection is built to brief.</p>
+        <div>
+          <div class="spec-row">
+            <div class="spec-check"></div>
+            <p class="s-body">Available in 50g, 100g, 150g, 250g & 300g</p>
+          </div>
+          <div class="spec-row">
+            <div class="spec-check"></div>
+            <p class="s-body">Single, double, or triple wick</p>
+          </div>
+          <div class="spec-row">
+            <div class="spec-check"></div>
+            <p class="s-body">Custom label or full vessel branding</p>
+          </div>
+          <div class="spec-row">
+            <div class="spec-check"></div>
+            <p class="s-body">Fragrance developed or matched to brief</p>
+          </div>
+          <div class="spec-row">
+            <div class="spec-check"></div>
+            <p class="s-body">Minimum order from 500 units</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IFRA / ASSURANCE BAND -->
+<section class="section-wrap scale-bg">
+  <div class="inner" style="max-width: 820px; margin: 0 auto; text-align: center;">
+    <div class="reveal">
+      <span class="s-label" style="color: rgba(201,175,128,0.5);">Made Responsibly</span>
+      <h2 class="s-title-lg" style="color: var(--cream); margin-bottom: 20px;">IFRA-Compliant,<br>Every Format</h2>
+      <p class="s-body" style="color: rgba(237,233,223,0.55);">Every product in the collection is formulated and produced to International Fragrance Association standards, with safety and compliance signed off before production. Packaging, branding, and fragrance are coordinated end to end — so the product that carries your name meets the same standard as the scent in your space.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-wrap newsletter-bg">
+  <div style="max-width: 640px; margin: 0 auto; text-align: center;" class="reveal">
+    <span class="s-label" style="color: rgba(201,175,128,0.5);">Extend Your Brand</span>
+    <h2 style="font-family: var(--font-head); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--cream); margin-bottom: 16px;">Commission Your Collection</h2>
+    <p class="s-body" style="color: rgba(237,233,223,0.45); margin-bottom: 40px;">Tell us the formats you have in mind and the scent you want to carry. We will shape the range around your brand.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="/contact" class="btn btn-sand">Request a Consultation <span style="font-size:1.1em">→</span></a>
+      <a href="/services" class="btn btn-ghost">All Services <span style="font-size:1.1em">→</span></a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+<script src="/app.js" is:inline></script>
+</Base>

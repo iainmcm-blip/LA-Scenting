@@ -141,6 +141,63 @@ button { font-family: inherit; cursor: pointer; }
   transition: transform 0.3s;
 }
 
+/* ── Services dropdown ─────────────────────────────────────── */
+.nav-has-dropdown { position: relative; }
+.nav-caret {
+  display: inline-block;
+  font-size: 0.7em;
+  margin-left: 2px;
+  opacity: 0.6;
+  transition: transform 0.3s var(--ease-out), opacity 0.3s;
+}
+.nav-has-dropdown:hover .nav-caret,
+.nav-has-dropdown:focus-within .nav-caret { transform: rotate(180deg); opacity: 1; }
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 210px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 12px 0;
+  background: rgba(237, 233, 223, 0.98);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(45, 45, 35, 0.08);
+  box-shadow: 0 16px 40px rgba(45, 45, 35, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out), visibility 0.3s;
+}
+.nav-has-dropdown:hover .nav-dropdown,
+.nav-has-dropdown:focus-within .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown li { display: block; }
+.nav-dropdown a {
+  display: block;
+  padding: 9px 24px;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+.nav-dropdown a::after { display: none; }
+.nav-dropdown a:hover { background: rgba(45, 45, 35, 0.05); }
+.mobile-nav-sub {
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.14em !important;
+  color: var(--sand) !important;
+  margin-top: -14px;
+}
+
 /* ── Mobile overlay ────────────────────────────────────────── */
 .mobile-nav-overlay {
   display: none;

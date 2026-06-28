@@ -3,6 +3,7 @@ const path = Astro.url.pathname;
 const isActive = (href: string) =>
   path === href || path === href + '/' || path === href + '.html' ||
   (href === '/' && (path === '/index.html' || path === '/'));
+const inServices = path.startsWith('/services');
 ---
 
 <nav class="main-nav" transition:persist>
@@ -11,7 +12,14 @@ const isActive = (href: string) =>
     <li><a href="/" class:list={[{ active: isActive('/') }]}>Home</a></li>
     <li><a href="/about-us" class:list={[{ active: isActive('/about-us') }]}>About Us</a></li>
     <li><a href="/philosophy" class:list={[{ active: isActive('/philosophy') }]}>Philosophy</a></li>
-    <li><a href="/services" class:list={[{ active: isActive('/services') }]}>Services &amp; Products</a></li>
+    <li class="nav-has-dropdown">
+      <a href="/services" class:list={[{ active: inServices }]} aria-haspopup="true" aria-expanded="false">Services &amp; Products <span class="nav-caret" aria-hidden="true">▾</span></a>
+      <ul class="nav-dropdown">
+        <li><a href="/services" class:list={[{ active: isActive('/services') }]}>Overview</a></li>
+        <li><a href="/services/white-label" class:list={[{ active: isActive('/services/white-label') }]}>White Label</a></li>
+        <li><a href="/services/workshops" class:list={[{ active: isActive('/services/workshops') }]}>Workshops &amp; Events</a></li>
+      </ul>
+    </li>
     <li><a href="/journal" class:list={[{ active: isActive('/journal') }]}>The Journal</a></li>
     <li><a href="https://motion-sensory-site.vercel.app/index.html" target="_blank" rel="noopener">Motion Sensory</a></li>
   </ul>
@@ -27,6 +35,8 @@ const isActive = (href: string) =>
   <a href="/about-us">About Us</a>
   <a href="/philosophy">Philosophy</a>
   <a href="/services">Services &amp; Products</a>
+  <a href="/services/white-label" class="mobile-nav-sub">White Label</a>
+  <a href="/services/workshops" class="mobile-nav-sub">Workshops &amp; Events</a>
   <a href="/journal">The Journal</a>
   <a href="https://motion-sensory-site.vercel.app/index.html" target="_blank" rel="noopener">Motion Sensory</a>
   <a href="/contact">Contact Us</a>
