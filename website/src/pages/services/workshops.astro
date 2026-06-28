@@ -49,10 +49,31 @@ const families = [
   .ws-ov-card {
     background: var(--cream);
     border: 1px solid rgba(45,45,35,0.12);
+    border-top: 2px solid var(--sand);
     padding: 40px 32px;
     display: flex;
     flex-direction: column;
+    color: var(--olive);
+    transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
   }
+  .ws-ov-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 22px 48px rgba(45,45,35,0.12);
+  }
+  .ws-ov-link {
+    font-family: var(--font-head);
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--sand);
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .ws-ov-card:hover .ws-ov-link span { transform: translateY(3px); }
+  .ws-ov-link span { transition: transform 0.35s var(--ease-out); }
+  .ws-section { scroll-margin-top: 92px; }
   .ws-ov-letter {
     font-family: var(--font-note);
     font-style: italic;
@@ -70,19 +91,26 @@ const families = [
     margin-bottom: 14px;
   }
   .ws-module {
-    display: grid;
-    grid-template-columns: 56px 1fr;
-    gap: 20px;
-    padding: 18px 0;
-    border-bottom: 1px solid rgba(45,45,35,0.08);
-    align-items: baseline;
+    border-top: 1px solid rgba(45,45,35,0.1);
   }
-  .ws-module:last-child { border-bottom: none; }
+  .ws-module:last-of-type { border-bottom: 1px solid rgba(45,45,35,0.1); }
+  .ws-module summary {
+    list-style: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    gap: 18px;
+    align-items: center;
+    padding: 19px 4px;
+  }
+  .ws-module summary::-webkit-details-marker { display: none; }
+  .ws-module summary:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
   .ws-module-num {
     font-family: var(--font-note);
     font-style: italic;
     font-size: 1.3rem;
     color: var(--sand);
+    line-height: 1;
   }
   .ws-module-t {
     font-family: var(--font-head);
@@ -90,8 +118,19 @@ const families = [
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 5px;
+    line-height: 1.35;
+    transition: color 0.3s var(--ease-out);
   }
+  .ws-module[open] .ws-module-t { color: var(--sand); }
+  .ws-module-chev { position: relative; width: 14px; height: 14px; flex-shrink: 0; }
+  .ws-module-chev::before, .ws-module-chev::after {
+    content: ''; position: absolute; background: var(--sand);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .ws-module-chev::before { top: 6px; left: 0; width: 14px; height: 2px; }
+  .ws-module-chev::after { top: 0; left: 6px; width: 2px; height: 14px; }
+  .ws-module[open] .ws-module-chev::after { opacity: 0; transform: scaleY(0); }
+  .ws-module-body { overflow: hidden; padding: 0 4px 20px 62px; }
   .family-row {
     display: grid;
     grid-template-columns: 220px 1fr 1fr;
@@ -110,27 +149,34 @@ const families = [
   }
   .family-note { font-family: var(--font-note); font-style: italic; font-size: 1rem; color: rgba(201,175,128,0.75); }
   .family-ex { font-family: var(--font-note); font-style: italic; font-size: 0.95rem; color: rgba(237,233,223,0.45); }
-  .activations {
+  .activations { background: var(--olive); }
+  .act-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 84px clamp(28px, 6vw, 80px);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 72px;
+    align-items: center;
   }
-  .act-text {
-    background: var(--olive);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 72px 64px;
+  .act-text { display: flex; flex-direction: column; }
+  .act-figure { display: flex; justify-content: flex-end; }
+  .act-img-frame {
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    box-shadow: 0 26px 60px rgba(0,0,0,0.34);
   }
-  .act-img { min-height: 440px; }
   @media (max-width: 860px) {
     .ws-overview { grid-template-columns: 1fr; }
     .family-row { grid-template-columns: 1fr; gap: 6px; }
   }
   @media (max-width: 768px) {
-    .activations { grid-template-columns: 1fr; }
-    .act-text { padding: 56px 28px; }
-    .act-img { min-height: 0; aspect-ratio: 16 / 10; }
+    .act-inner { grid-template-columns: 1fr; gap: 36px; padding: 56px 28px; }
+    .act-figure { justify-content: flex-start; }
+    .act-img-frame { max-width: 300px; }
+    .ws-module-body { padding-left: 50px; }
   }
 </style>
 
@@ -168,20 +214,21 @@ const families = [
     </div>
     <div class="ws-overview reveal rd1">
       {overview.map((w) => (
-        <div class="ws-ov-card">
+        <a class="ws-ov-card" href={`#workshop-${w.key.toLowerCase()}`}>
           <div class="ws-ov-letter">{w.key}</div>
           <span class="s-label" style="margin-bottom: 10px;">Workshop {w.key}</span>
           <h3 style="font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; line-height: 1.25;">{w.name}</h3>
           <p class="ws-ov-meta">{w.meta}</p>
-          <p class="s-body" style="font-size: 0.88rem;">{w.desc}</p>
-        </div>
+          <p class="s-body" style="font-size: 0.88rem; margin-bottom: 18px;">{w.desc}</p>
+          <span class="ws-ov-link" style="margin-top: auto;">Explore Workshop {w.key} <span aria-hidden="true">↓</span></span>
+        </a>
       ))}
     </div>
   </div>
 </section>
 
 <!-- WORKSHOP A DETAIL -->
-<section class="section-wrap" style="background: var(--cream);">
+<section id="workshop-a" class="section-wrap ws-section" style="background: var(--cream);">
   <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
     <div style="display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 72px; align-items: start;">
       <div class="reveal" style="position: sticky; top: 110px;">
@@ -195,13 +242,16 @@ const families = [
       </div>
       <div class="reveal rd1">
         {workshopA.map((m) => (
-          <div class="ws-module">
-            <span class="ws-module-num">{m.n}</span>
-            <div>
-              <p class="ws-module-t">{m.t}</p>
+          <details class="ws-module">
+            <summary>
+              <span class="ws-module-num">{m.n}</span>
+              <span class="ws-module-t">{m.t}</span>
+              <span class="ws-module-chev" aria-hidden="true"></span>
+            </summary>
+            <div class="ws-module-body">
               <p class="s-body" style="font-size: 0.88rem;">{m.d}</p>
             </div>
-          </div>
+          </details>
         ))}
       </div>
     </div>
@@ -209,18 +259,21 @@ const families = [
 </section>
 
 <!-- WORKSHOP B DETAIL -->
-<section class="section-wrap" style="background: var(--cream-mid);">
+<section id="workshop-b" class="section-wrap ws-section" style="background: var(--cream-mid);">
   <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
     <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 72px; align-items: start;">
       <div class="reveal">
         {workshopB.map((m) => (
-          <div class="ws-module">
-            <span class="ws-module-num">{m.n}</span>
-            <div>
-              <p class="ws-module-t">{m.t}</p>
+          <details class="ws-module">
+            <summary>
+              <span class="ws-module-num">{m.n}</span>
+              <span class="ws-module-t">{m.t}</span>
+              <span class="ws-module-chev" aria-hidden="true"></span>
+            </summary>
+            <div class="ws-module-body">
               <p class="s-body" style="font-size: 0.88rem;">{m.d}</p>
             </div>
-          </div>
+          </details>
         ))}
       </div>
       <div class="reveal rd1" style="position: sticky; top: 110px;">
@@ -237,7 +290,7 @@ const families = [
 </section>
 
 <!-- WORKSHOP C — FIVE CORE NOTES -->
-<section class="section-wrap scale-bg">
+<section id="workshop-c" class="section-wrap scale-bg ws-section">
   <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
     <div class="reveal" style="max-width: 700px; margin-bottom: 16px;">
       <span class="s-label" style="color: rgba(201,175,128,0.5);">Workshop C</span>
@@ -258,13 +311,17 @@ const families = [
 
 <!-- FRAGRANCE ACTIVATIONS -->
 <section class="activations">
-  <div class="act-text">
-    <span class="s-label" style="color: rgba(201,175,128,0.5);">Live Events</span>
-    <h2 class="s-title-lg" style="color: var(--cream); margin-bottom: 24px;">Fragrance<br>Activations</h2>
-    <p class="s-body" style="color: rgba(237,233,223,0.55); margin-bottom: 0;">A mobile scent bar or trolley, deployed live at your event for in-person fragrance mixology. An interactive, ad-hoc format that works as a standalone activity or a memorable take-home gift moment for guests — bringing the workshop experience straight to the floor.</p>
-  </div>
-  <div class="act-img img-box">
-    <img loading="lazy" decoding="async" src="/images/oil.jpg" alt="LA Scenting Fragrance Activations mobile scent bar">
+  <div class="act-inner">
+    <div class="act-text">
+      <span class="s-label" style="color: rgba(201,175,128,0.5);">Live Events</span>
+      <h2 class="s-title-lg" style="color: var(--cream); margin: 14px 0 26px;">Fragrance<br>Activations</h2>
+      <p class="s-body" style="color: rgba(237,233,223,0.6); max-width: 540px;">A mobile scent bar or trolley, deployed live at your event for in-person fragrance mixology. An interactive, ad-hoc format that works as a standalone activity or a memorable take-home gift moment for guests — bringing the workshop experience straight to the floor.</p>
+    </div>
+    <div class="act-figure">
+      <div class="act-img-frame img-box">
+        <img loading="lazy" decoding="async" src="/images/oil.jpg" alt="LA Scenting Fragrance Activations mobile scent bar">
+      </div>
+    </div>
   </div>
 </section>
 
@@ -282,5 +339,70 @@ const families = [
 </section>
 
 <Footer />
+
+<script is:inline>
+  (function () {
+    // Smooth-scroll the A/B/C overview cards to their workshop section
+    function setupCardScroll() {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('.ws-ov-card').forEach(function (card) {
+        if (card.dataset.scrollBound) return;
+        card.dataset.scrollBound = '1';
+        card.addEventListener('click', function (e) {
+          var id = (card.getAttribute('href') || '').replace('#', '');
+          var target = document.getElementById(id);
+          if (!target) return;
+          e.preventDefault();
+          target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+          if (history.replaceState) history.replaceState(null, '', '#' + id);
+        });
+      });
+    }
+    // Animate the Workshop A/B module accordions — same motion as the Services pillars
+    function setupModules() {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+      document.querySelectorAll('.ws-module').forEach(function (d) {
+        if (d.dataset.animBound) return;
+        d.dataset.animBound = '1';
+        var summary = d.querySelector('summary');
+        var body = d.querySelector('.ws-module-body');
+        if (!summary || !body) return;
+        var animating = false;
+        summary.addEventListener('click', function (e) {
+          if (reduce) return;
+          e.preventDefault();
+          if (animating) return;
+          animating = true;
+          if (d.open) {
+            var startH = body.offsetHeight;
+            var closing = body.animate(
+              [{ height: startH + 'px', opacity: 1 }, { height: '0px', opacity: 0 }],
+              { duration: 440, easing: ease }
+            );
+            closing.onfinish = closing.oncancel = function () {
+              d.open = false; body.style.height = ''; body.style.opacity = ''; animating = false;
+            };
+          } else {
+            d.open = true;
+            var endH = body.offsetHeight;
+            var opening = body.animate(
+              [{ height: '0px', opacity: 0, transform: 'translateY(6px)' }, { height: endH + 'px', opacity: 1, transform: 'translateY(0)' }],
+              { duration: 580, easing: ease }
+            );
+            opening.onfinish = opening.oncancel = function () {
+              body.style.height = ''; body.style.opacity = ''; body.style.transform = ''; animating = false;
+            };
+          }
+        });
+      });
+    }
+    function init() { setupCardScroll(); setupModules(); }
+    document.addEventListener('astro:page-load', init);
+    if (document.readyState !== 'loading') init();
+    else document.addEventListener('DOMContentLoaded', init);
+  })();
+</script>
+
 <script src="/app.js" is:inline></script>
 </Base>
