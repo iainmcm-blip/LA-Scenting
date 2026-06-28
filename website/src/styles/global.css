@@ -367,6 +367,45 @@ button { font-family: inherit; cursor: pointer; }
 .img-box img { transition: transform 1.4s var(--ease-out); }
 .img-box:hover img { transform: scale(1.04); }
 
+/* ── Logo marquee (Trusted By) ─────────────────────────────── */
+.logo-marquee {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: logoScroll 42s linear infinite;
+}
+.logo-marquee:hover .logo-marquee-track { animation-play-state: paused; }
+.logo-marquee-item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  padding: 0 clamp(28px, 5vw, 56px);
+}
+.logo-marquee-item img {
+  height: 40px;
+  width: auto;
+  max-width: 170px;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.42);
+  mix-blend-mode: multiply;
+  transition: filter 0.35s;
+}
+.logo-marquee-item img:hover { filter: grayscale(0.3) opacity(0.72); }
+@keyframes logoScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track { animation: none; }
+}
+
 /* ── HERO ──────────────────────────────────────────────────── */
 .hero {
   position: relative;

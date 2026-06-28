@@ -1,0 +1,23 @@
+---
+// Single-line, right-to-left infinite logo marquee — shared across Home & About
+const logos = [
+  { src: '/images/clients/changi.png', alt: 'Changi Airport' },
+  { src: '/images/clients/audi.png', alt: 'Audi' },
+  { src: '/images/clients/capitaland.svg', alt: 'CapitaLand' },
+  { src: '/images/clients/cbre.png', alt: 'CBRE' },
+  { src: '/images/clients/microsoft.svg', alt: 'Microsoft' },
+  { src: '/images/clients/samsung.svg', alt: 'Samsung' },
+  { src: '/images/clients/tempur.png', alt: 'Tempur' },
+  { src: '/images/clients/alila.png', alt: 'Alila Hotels' },
+];
+// Duplicate the set so the -50% translate loops seamlessly.
+const loop = [...logos, ...logos];
+const altList = logos.map((l) => l.alt).join(', ');
+---
+<div class="logo-marquee" role="img" aria-label={`Trusted by ${altList}`}>
+  <div class="logo-marquee-track" aria-hidden="true">
+    {loop.map((l) => (
+      <div class="logo-marquee-item"><img src={l.src} alt="" loading="lazy" /></div>
+    ))}
+  </div>
+</div>

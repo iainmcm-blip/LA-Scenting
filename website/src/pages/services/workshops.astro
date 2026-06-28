@@ -110,9 +110,27 @@ const families = [
   }
   .family-note { font-family: var(--font-note); font-style: italic; font-size: 1rem; color: rgba(201,175,128,0.75); }
   .family-ex { font-family: var(--font-note); font-style: italic; font-size: 0.95rem; color: rgba(237,233,223,0.45); }
+  .activations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+  .act-text {
+    background: var(--olive);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 72px 64px;
+  }
+  .act-img { min-height: 440px; }
   @media (max-width: 860px) {
     .ws-overview { grid-template-columns: 1fr; }
     .family-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+  @media (max-width: 768px) {
+    .activations { grid-template-columns: 1fr; }
+    .act-text { padding: 56px 28px; }
+    .act-img { min-height: 0; aspect-ratio: 16 / 10; }
   }
 </style>
 
@@ -239,13 +257,13 @@ const families = [
 </section>
 
 <!-- FRAGRANCE ACTIVATIONS -->
-<section class="editorial-break" style="display: grid; grid-template-columns: 1fr 1fr; min-height: 480px;">
-  <div style="background: var(--olive); display: flex; flex-direction: column; justify-content: center; padding: 72px 64px;">
+<section class="activations">
+  <div class="act-text">
     <span class="s-label" style="color: rgba(201,175,128,0.5);">Live Events</span>
     <h2 class="s-title-lg" style="color: var(--cream); margin-bottom: 24px;">Fragrance<br>Activations</h2>
     <p class="s-body" style="color: rgba(237,233,223,0.55); margin-bottom: 0;">A mobile scent bar or trolley, deployed live at your event for in-person fragrance mixology. An interactive, ad-hoc format that works as a standalone activity or a memorable take-home gift moment for guests — bringing the workshop experience straight to the floor.</p>
   </div>
-  <div class="img-box" style="min-height: 480px;">
+  <div class="act-img img-box">
     <img loading="lazy" decoding="async" src="/images/oil.jpg" alt="LA Scenting Fragrance Activations mobile scent bar">
   </div>
 </section>

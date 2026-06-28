@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import LogoMarquee from '../components/LogoMarquee.astro';
 import HeroHaze from '../components/HeroHaze.astro';
 import PillarScroll from '../components/PillarScroll.astro';
 import ProcessTrack from '../components/ProcessTrack.astro';
@@ -10,31 +11,6 @@ import ProcessTrack from '../components/ProcessTrack.astro';
   <Nav />
 
 <style>
-  .logo-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px 48px;
-    justify-items: center;
-    align-items: center;
-  }
-  .logo-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 48px;
-  }
-  .logo-item img {
-    height: 36px;
-    width: auto;
-    max-width: 130px;
-    object-fit: contain;
-    filter: grayscale(1) opacity(0.42);
-    transition: filter 0.3s;
-    mix-blend-mode: multiply;
-  }
-  .logo-item img:hover {
-    filter: grayscale(0.4) opacity(0.65);
-  }
   .cs-stat-row {
     display: flex;
     gap: 32px;
@@ -63,12 +39,7 @@ import ProcessTrack from '../components/ProcessTrack.astro';
     letter-spacing: 0.18em;
     color: rgba(45,45,35,0.42);
   }
-  @media (max-width: 900px) {
-    .logo-bar { grid-template-columns: repeat(4, 1fr); gap: 24px 32px; }
-  }
   @media (max-width: 600px) {
-    .logo-bar { grid-template-columns: repeat(2, 1fr); gap: 20px 24px; }
-    .logo-item img { height: 40px !important; max-width: 140px !important; }
     .cs-stat-row { gap: 20px; }
   }
 </style>
@@ -184,31 +155,8 @@ import ProcessTrack from '../components/ProcessTrack.astro';
     <div class="reveal" style="text-align: center; margin-bottom: 40px;">
       <span class="s-label">Trusted By</span>
     </div>
-    <div class="logo-bar reveal rd1">
-      <div class="logo-item">
-        <img src="/images/clients/changi.png" alt="Changi Airport" loading="lazy" style="height: 72px; max-width: 260px;">
-      </div>
-      <div class="logo-item">
-        <img src="/images/clients/audi.png" alt="Audi" loading="lazy" style="height: 72px; max-width: 260px;">
-      </div>
-      <div class="logo-item">
-        <img src="/images/clients/capitaland.svg" alt="CapitaLand" loading="lazy" style="height: 72px; max-width: 260px;">
-      </div>
-      <div class="logo-item">
-        <img src="/images/clients/cbre.png" alt="CBRE" loading="lazy">
-      </div>
-      <div class="logo-item">
-        <img src="/images/clients/microsoft.svg" alt="Microsoft" loading="lazy">
-      </div>
-      <div class="logo-item">
-        <img src="/images/clients/samsung.svg" alt="Samsung" loading="lazy">
-      </div>
-      <div class="logo-item">
-        <img src="/images/clients/tempur.png" alt="Tempur" loading="lazy">
-      </div>
-      <div class="logo-item">
-        <img src="/images/clients/alila.png" alt="Alila Hotels" loading="lazy">
-      </div>
+    <div class="reveal rd1">
+      <LogoMarquee />
     </div>
   </div>
 </section>

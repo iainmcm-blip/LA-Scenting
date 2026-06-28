@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import LogoMarquee from '../components/LogoMarquee.astro';
 import PageHaze from '../components/PageHaze.astro';
 ---
 <Base title="About Us — LA Scenting" description="LA Scenting was founded on a singular conviction: that every great space deserves a scent identity as considered as its architecture.">
@@ -134,17 +135,12 @@ import PageHaze from '../components/PageHaze.astro';
 
 <!-- CLIENTS -->
 <section class="section-wrap" style="background: var(--cream); padding-top: 72px; padding-bottom: 72px;">
-  <div class="inner" style="max-width: var(--max-w); margin: 0 auto; text-align: center;">
-    <span class="s-label reveal" style="margin-bottom: 36px;">Trusted By</span>
-    <div class="reveal rd1 client-logo-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 48px; justify-items: center; align-items: center; margin-top: 8px;">
-      <img src="/images/clients/changi.png" alt="Changi Airport" loading="lazy" style="height: 72px; width: auto; max-width: 260px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
-      <img src="/images/clients/audi.png" alt="Audi" loading="lazy" style="height: 72px; width: auto; max-width: 260px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
-      <img src="/images/clients/capitaland.svg" alt="CapitaLand" loading="lazy" style="height: 72px; width: auto; max-width: 260px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
-      <img src="/images/clients/cbre.png" alt="CBRE" loading="lazy" style="height: 36px; width: auto; max-width: 130px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
-      <img src="/images/clients/microsoft.svg" alt="Microsoft" loading="lazy" style="height: 36px; width: auto; max-width: 130px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
-      <img src="/images/clients/samsung.svg" alt="Samsung" loading="lazy" style="height: 36px; width: auto; max-width: 130px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
-      <img src="/images/clients/tempur.png" alt="Tempur" loading="lazy" style="height: 36px; width: auto; max-width: 130px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
-      <img src="/images/clients/alila.png" alt="Alila Hotels" loading="lazy" style="height: 36px; width: auto; max-width: 130px; object-fit: contain; filter: grayscale(1) opacity(0.42); mix-blend-mode: multiply;">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span class="s-label reveal">Trusted By</span>
+    </div>
+    <div class="reveal rd1">
+      <LogoMarquee />
     </div>
   </div>
 </section>
