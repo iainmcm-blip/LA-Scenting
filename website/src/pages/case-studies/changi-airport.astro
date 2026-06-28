@@ -125,6 +125,7 @@ import PageHaze from '../../components/PageHaze.astro';
     .cs-body-grid { grid-template-columns: 1fr; gap: 48px; }
     .stat-grid { grid-template-columns: 1fr; }
     .ecosystem-grid { grid-template-columns: 1fr; }
+    .cs-collection { grid-template-columns: 1fr !important; }
   }
   @media (max-width: 600px) {
     .cs-meta-bar { gap: 24px; }
@@ -135,7 +136,7 @@ import PageHaze from '../../components/PageHaze.astro';
 <!-- HERO -->
 <section class="cs-hero" style="padding-top: var(--nav-h);">
   <div class="cs-hero-bg">
-    <img loading="eager" decoding="async" src="/images/changi.jpg" alt="Changi Airport Singapore — LA Scenting">
+    <img loading="eager" decoding="async" src="/images/case-studies/changi-aerial.jpg" alt="Changi Airport Singapore — LA Scenting">
   </div>
   <div class="cs-hero-overlay"></div>
   <PageHaze />
@@ -179,7 +180,7 @@ import PageHaze from '../../components/PageHaze.astro';
         <div class="stat-desc">Reduction in Perceived Stress</div>
       </div>
       <div class="stat-cell" style="background: rgba(255,255,255,0.03);">
-        <div class="stat-big">20%</div>
+        <div class="stat-big">15–20%</div>
         <div class="stat-desc">Increase in Retail Dwell Time</div>
       </div>
       <div class="stat-cell">
@@ -227,6 +228,18 @@ import PageHaze from '../../components/PageHaze.astro';
         <p class="s-body" style="color: rgba(237,233,223,0.5);">The formula was engineered to perform consistently across high-traffic public zones — maintaining presence without ever becoming assertive, and shifting subtly across different terminal areas to reflect their distinct emotional purposes.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ORCHID TEA COLLECTION IMAGE -->
+<section style="display: grid; grid-template-columns: 1fr 1fr; min-height: 460px;" class="cs-collection">
+  <div class="img-box" style="min-height: 460px;">
+    <img loading="lazy" decoding="async" src="/images/case-studies/changi-orchid-tea.jpg" alt="The Orchid Tea Collection — Changi Scent products">
+  </div>
+  <div style="background: var(--cream-mid); display: flex; flex-direction: column; justify-content: center; padding: 64px;">
+    <span class="s-label">Emotional Experience → Commercial Value</span>
+    <h2 class="s-title" style="margin: 14px 0 22px;">The Orchid Tea<br>Collection</h2>
+    <p class="s-body">The distilled essence of Changi's olfactory identity became a retail ecosystem in its own right — candles, diffusers, oils, hand sanitisers, and a collaborative range with Mandai Wildlife. Beyond the terminal air, a 15–20% increase in retail dwell time translated directly into lifted concession and F&amp;B revenues.</p>
   </div>
 </section>
 

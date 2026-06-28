@@ -1,0 +1,109 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import PageHaze from '../../components/PageHaze.astro';
+---
+<Base title="Alila Hotels & Resorts — LA Scenting Case Study" description="How LA Scenting designed an environmental signature for Alila Hotels & Resorts — preserving place-centric authenticity while amplifying brand permanence across global destinations.">
+  <Nav />
+
+<style>
+  .cs-hero { position: relative; height: 80vh; min-height: 520px; overflow: hidden; display: flex; align-items: flex-end; }
+  .cs-hero-bg { position: absolute; inset: 0; }
+  .cs-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .cs-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(45,45,35,0.18) 0%, rgba(45,45,35,0.76) 100%); }
+  .cs-hero-content { position: relative; z-index: 2; padding: 0 var(--gutter) 72px; max-width: var(--max-w); margin: 0 auto; width: 100%; }
+  .cs-meta-bar { display: flex; gap: 48px; flex-wrap: wrap; margin-top: 64px; padding: 48px 0; border-top: 1px solid rgba(45,45,35,0.08); border-bottom: 1px solid rgba(45,45,35,0.08); }
+  .cs-meta-item { display: flex; flex-direction: column; gap: 6px; }
+  .cs-meta-label { font-family: var(--font-head); font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(45,45,35,0.4); }
+  .cs-meta-value { font-family: var(--font-body); font-size: 0.95rem; color: var(--olive); }
+  .cs-body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  @media (max-width: 900px) {
+    .cs-body-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  @media (max-width: 600px) {
+    .cs-meta-bar { gap: 24px; }
+    .cs-hero-content { padding-bottom: 48px; }
+  }
+</style>
+
+<!-- HERO -->
+<section class="cs-hero" style="padding-top: var(--nav-h);">
+  <div class="cs-hero-bg">
+    <img loading="eager" decoding="async" src="/images/case-studies/alila-pool.jpg" alt="Alila Hotels & Resorts — LA Scenting">
+  </div>
+  <div class="cs-hero-overlay"></div>
+  <PageHaze />
+  <div class="cs-hero-content">
+    <span class="s-label" style="color: rgba(201,175,128,0.6); margin-bottom: 16px;">Case Study · 03</span>
+    <h1 style="font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cream); line-height: 1.1; max-width: 760px;">Alila Hotels &amp; Resorts</h1>
+    <p style="font-family: var(--font-note); font-style: italic; font-size: clamp(1rem, 2vw, 1.3rem); color: rgba(237,233,223,0.65); margin-top: 16px;">Redefining Brand Permanence Across Global Destinations</p>
+  </div>
+</section>
+
+<!-- META BAR -->
+<section style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="cs-meta-bar reveal">
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-value">Alila Hotels &amp; Resorts</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Sector</span><span class="cs-meta-value">Luxury Hospitality</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Scope</span><span class="cs-meta-value">Environmental Signature · Multi-Property</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Location</span><span class="cs-meta-value">Global Destinations</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE BRIEF -->
+<section class="section-wrap" style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="cs-body-grid">
+      <div class="reveal rd1">
+        <div class="img-box" style="aspect-ratio: 4/5;">
+          <img loading="lazy" decoding="async" src="/images/case-studies/alila-pool.jpg" alt="Alila resort" style="object-position: center;">
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="s-label">The Brief</span>
+        <h2 class="s-title" style="margin-bottom: 28px;">Authenticity of Place,<br>Permanence of Brand</h2>
+        <p class="s-body" style="margin-bottom: 20px;">Luxury hospitality lives on a tension: each property must feel rooted in its own destination, yet every property must feel unmistakably part of the same brand. For Alila, we set out to resolve that tension in scent.</p>
+        <p class="s-body">The brief called for a refined environmental signature that aligned seamlessly with Alila's architectural language and brand ethos — a fragrance that preserved place-centric authenticity while amplifying long-term brand distinction within the luxury hospitality landscape.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE APPROACH -->
+<section class="section-wrap" style="background: var(--olive);">
+  <div class="inner" style="max-width: 820px; margin: 0 auto; text-align: center;">
+    <div class="reveal">
+      <span class="s-label" style="color: rgba(201,175,128,0.5);">The Approach</span>
+      <h2 class="s-title-lg" style="color: var(--cream); margin-bottom: 24px;">A Signature That<br>Travels Without Fading</h2>
+      <p class="s-body" style="color: rgba(237,233,223,0.55);">We designed for permanence — a scent distinct enough to become shorthand for the brand, yet open enough to absorb the character of each destination it inhabits. The result holds its identity from one resort to the next, deepening guest recognition over time while never overriding the sense of place that makes each Alila its own.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section class="section-wrap quote-bg">
+  <div class="quote-inner reveal">
+    <blockquote>"Brand permanence in hospitality is not about repeating the same scent. It is about a signature a returning guest recognises before they remember why."</blockquote>
+    <p class="quote-attr">Aaliyah Hamdoon · Founder, LA Scenting</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-wrap newsletter-bg">
+  <div style="max-width: 600px; margin: 0 auto; text-align: center;" class="reveal">
+    <span class="s-label" style="color: rgba(201,175,128,0.5);">Work with Us</span>
+    <h2 style="font-family: var(--font-head); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--cream); margin-bottom: 16px; line-height: 1.2;">Every Destination,<br>One Signature.</h2>
+    <p class="s-body" style="color: rgba(237,233,223,0.45); margin-bottom: 40px;">Tell us about your properties and we will design a signature that travels with your brand.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="/contact" class="btn btn-sand">Request a Consultation <span style="font-size:1.1em">→</span></a>
+      <a href="/case-studies" class="btn btn-ghost">All Case Studies <span style="font-size:1.1em">→</span></a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+<script src="/app.js" is:inline></script>
+</Base>

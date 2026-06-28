@@ -8,6 +8,17 @@ import PageHaze from '../components/PageHaze.astro';
 <Base title="About Us — LA Scenting" description="LA Scenting was founded on a singular conviction: that every great space deserves a scent identity as considered as its architecture.">
   <Nav />
 
+<style>
+  .four-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(45,45,35,0.1); border: 1px solid rgba(45,45,35,0.1); }
+  .four-item { background: var(--cream); padding: 40px 28px; min-height: 200px; display: flex; flex-direction: column; }
+  .four-num { font-family: var(--font-note); font-style: italic; font-size: 2.6rem; color: var(--sand); line-height: 1; margin-bottom: auto; }
+  .four-q { font-family: var(--font-head); font-size: 0.92rem; font-weight: 700; letter-spacing: 0.01em; line-height: 1.4; margin-top: 28px; }
+  @media (max-width: 760px) {
+    .four-grid { grid-template-columns: 1fr 1fr; }
+    .four-item { min-height: 150px; padding: 28px 22px; }
+  }
+</style>
+
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg">
@@ -36,6 +47,35 @@ import PageHaze from '../components/PageHaze.astro';
       <p class="s-body" style="font-size: 1rem; margin-bottom: 22px;">LA Scenting was born to close that gap. Years spent working across a wide network of manufacturers and suppliers — and a deliberate choice to stay independent of exclusive distributorships — means every recommendation is shaped by what the space actually needs, not by what one supplier happens to sell.</p>
       <div class="rule" style="margin: 36px 0;"></div>
       <p class="s-note" style="font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.6; color: var(--olive);">A diffusion system is only as good as the scent it carries. A signature scent is only as good as the system delivering it consistently, two years on. We built LA Scenting to own both halves of that sentence — and everything in between.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCENT IS NEVER ONE DECISION -->
+<section class="section-wrap" style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="reveal" style="max-width: 680px; margin-bottom: 56px;">
+      <span class="s-label">The Whole Ecosystem</span>
+      <h2 class="s-title" style="margin: 14px 0 18px;">Scent Is Never One<br>Decision — It's Four</h2>
+      <p class="s-body" style="font-size: 1rem;">Most projects hand those four questions to four different companies and hope someone translates between them. Usually, no one does. We own all four.</p>
+    </div>
+    <div class="four-grid reveal rd1">
+      <div class="four-item">
+        <span class="four-num">01</span>
+        <p class="four-q">What it should smell like.</p>
+      </div>
+      <div class="four-item">
+        <span class="four-num">02</span>
+        <p class="four-q">How it's engineered into a space.</p>
+      </div>
+      <div class="four-item">
+        <span class="four-num">03</span>
+        <p class="four-q">Who installs and calibrates it right.</p>
+      </div>
+      <div class="four-item">
+        <span class="four-num">04</span>
+        <p class="four-q">Who keeps it, and understands it.</p>
+      </div>
     </div>
   </div>
 </section>

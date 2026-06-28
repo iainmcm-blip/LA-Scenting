@@ -18,6 +18,30 @@ import PageHaze from '../components/PageHaze.astro';
     margin-bottom: 16px;
     opacity: 0.6;
   }
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(45,45,35,0.1);
+    border: 1px solid rgba(45,45,35,0.1);
+  }
+  .how-step { background: var(--cream); padding: 32px 24px; display: flex; flex-direction: column; }
+  .how-num { font-family: var(--font-note); font-style: italic; font-size: 2rem; color: var(--sand); line-height: 1; }
+  .how-week {
+    font-family: var(--font-head); font-size: 0.5rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.18em; color: rgba(45,45,35,0.4);
+    margin-top: 14px;
+  }
+  .how-title {
+    font-family: var(--font-head); font-size: 0.74rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em; margin: 6px 0 12px;
+  }
+  @media (max-width: 900px) {
+    .how-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .how-grid { grid-template-columns: 1fr; }
+  }
 </style>
 
 <!-- PAGE HERO -->
@@ -115,46 +139,48 @@ import PageHaze from '../components/PageHaze.astro';
   </div>
 </section>
 
-<!-- PHILOSOPHY IN PRACTICE -->
+<!-- HOW WE WORK — 5-STEP PROCESS -->
 <section class="section-wrap" style="background: var(--cream-mid);">
   <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
-    <div class="grid-2">
-      <div class="img-box reveal" style="aspect-ratio: 3/4;">
-        <img loading="lazy" decoding="async" src="/images/oil.jpg" alt="LA Scenting philosophy in practice">
+    <div class="reveal" style="max-width: 680px; margin-bottom: 56px;">
+      <span class="s-label">Philosophy in Practice</span>
+      <h2 class="s-title" style="margin: 14px 0 18px;">How We Work</h2>
+      <p class="s-body" style="font-size: 1rem;">Every engagement begins with listening — to the space, the brand, and the people who move through it. From there, a defined sequence carries a project from first brief to a scent still performing years on.</p>
+    </div>
+    <div class="how-grid reveal rd1">
+      <div class="how-step">
+        <span class="how-num">01</span>
+        <span class="how-week">Week 1</span>
+        <h4 class="how-title">Discovery Brief</h4>
+        <p class="s-body" style="font-size: 0.82rem;">Consultation on space, brand, audience, and intent. We map the emotional journey before we discuss fragrance.</p>
       </div>
-      <div class="reveal rd1" style="display: flex; flex-direction: column; justify-content: center; gap: 32px;">
-        <div>
-          <span class="s-label">Philosophy in Practice</span>
-          <h2 class="s-title" style="margin-bottom: 20px;">The Process of<br>Invisible Design</h2>
-          <p class="s-body">Every LA Scenting engagement begins with listening — to the space, to the brand, to the people who will inhabit it. We map emotional journeys through architecture before we ever reach for a raw material.</p>
-        </div>
-        <div>
-          <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 20px;">
-            <span style="font-family: var(--font-note); font-style: italic; font-size: 1.4rem; color: var(--sand); flex-shrink: 0; line-height: 1;">01</span>
-            <div>
-              <h4 style="font-family: var(--font-head); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 6px;">Spatial Audit</h4>
-              <p class="s-body" style="font-size: 0.85rem;">Understanding the architecture, flow, dwell times, and emotional intention of every zone.</p>
-            </div>
-          </div>
-          <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 20px;">
-            <span style="font-family: var(--font-note); font-style: italic; font-size: 1.4rem; color: var(--sand); flex-shrink: 0; line-height: 1;">02</span>
-            <div>
-              <h4 style="font-family: var(--font-head); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 6px;">Brand Translation</h4>
-              <p class="s-body" style="font-size: 0.85rem;">Decoding your brand's visual and tonal identity into olfactory language and emotional parameters.</p>
-            </div>
-          </div>
-          <div style="display: flex; gap: 24px; align-items: flex-start;">
-            <span style="font-family: var(--font-note); font-style: italic; font-size: 1.4rem; color: var(--sand); flex-shrink: 0; line-height: 1;">03</span>
-            <div>
-              <h4 style="font-family: var(--font-head); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 6px;">Scent Composition</h4>
-              <p class="s-body" style="font-size: 0.85rem;">Bespoke formulation by our master perfumers, refined through iterative spatial testing until perfect.</p>
-            </div>
-          </div>
-        </div>
-        <div style="margin-top: 8px;">
-          <a href="/services" class="btn btn-light">Our Services <span style="font-size:1.1em">→</span></a>
-        </div>
+      <div class="how-step">
+        <span class="how-num">02</span>
+        <span class="how-week">Weeks 1–2</span>
+        <h4 class="how-title">Space Assessment</h4>
+        <p class="s-body" style="font-size: 0.82rem;">Technical review of architecture, airflow, footfall, and diffusion infrastructure. Systems are specified at this stage.</p>
       </div>
+      <div class="how-step">
+        <span class="how-num">03</span>
+        <span class="how-week">Weeks 3–6</span>
+        <h4 class="how-title">Accord Development</h4>
+        <p class="s-body" style="font-size: 0.82rem;">The brief translated into fragrance. Multiple rounds of sampling and sensory review until the accord is approved.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-num">04</span>
+        <span class="how-week">Weeks 6–8</span>
+        <h4 class="how-title">Installation & Calibration</h4>
+        <p class="s-body" style="font-size: 0.82rem;">System installation and live calibration. Intensity, schedule, and zoning refined in the actual environment.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-num">05</span>
+        <span class="how-week">Ongoing</span>
+        <h4 class="how-title">Ongoing Service</h4>
+        <p class="s-body" style="font-size: 0.82rem;">Scheduled maintenance, fragrance supply, and performance reviews. Retainer or per-service models available.</p>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top: 48px;">
+      <a href="/services" class="btn btn-light">Our Services <span style="font-size:1.1em">→</span></a>
     </div>
   </div>
 </section>

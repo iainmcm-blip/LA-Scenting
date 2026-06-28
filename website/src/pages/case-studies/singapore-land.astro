@@ -1,0 +1,109 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import PageHaze from '../../components/PageHaze.astro';
+---
+<Base title="Singapore Land Group — LA Scenting Case Study" description="How LA Scenting designed a signature scent that anchors Singapore Land Group's flagship CBD asset — a scalable olfactory framework for portfolio-wide rollout.">
+  <Nav />
+
+<style>
+  .cs-hero { position: relative; height: 80vh; min-height: 520px; overflow: hidden; display: flex; align-items: flex-end; }
+  .cs-hero-bg { position: absolute; inset: 0; }
+  .cs-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .cs-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(45,45,35,0.2) 0%, rgba(45,45,35,0.78) 100%); }
+  .cs-hero-content { position: relative; z-index: 2; padding: 0 var(--gutter) 72px; max-width: var(--max-w); margin: 0 auto; width: 100%; }
+  .cs-meta-bar { display: flex; gap: 48px; flex-wrap: wrap; margin-top: 64px; padding: 48px 0; border-top: 1px solid rgba(45,45,35,0.08); border-bottom: 1px solid rgba(45,45,35,0.08); }
+  .cs-meta-item { display: flex; flex-direction: column; gap: 6px; }
+  .cs-meta-label { font-family: var(--font-head); font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(45,45,35,0.4); }
+  .cs-meta-value { font-family: var(--font-body); font-size: 0.95rem; color: var(--olive); }
+  .cs-body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  @media (max-width: 900px) {
+    .cs-body-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  @media (max-width: 600px) {
+    .cs-meta-bar { gap: 24px; }
+    .cs-hero-content { padding-bottom: 48px; }
+  }
+</style>
+
+<!-- HERO -->
+<section class="cs-hero" style="padding-top: var(--nav-h);">
+  <div class="cs-hero-bg">
+    <img loading="eager" decoding="async" src="/images/case-studies/singapore-land-lobby.jpg" alt="Singapore Land Tower — LA Scenting">
+  </div>
+  <div class="cs-hero-overlay"></div>
+  <PageHaze />
+  <div class="cs-hero-content">
+    <span class="s-label" style="color: rgba(201,175,128,0.6); margin-bottom: 16px;">Case Study · 02</span>
+    <h1 style="font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cream); line-height: 1.1; max-width: 720px;">Singapore Land Group</h1>
+    <p style="font-family: var(--font-note); font-style: italic; font-size: clamp(1rem, 2vw, 1.3rem); color: rgba(237,233,223,0.65); margin-top: 16px;">A Signature Scent That Anchors the Heart of the CBD</p>
+  </div>
+</section>
+
+<!-- META BAR -->
+<section style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="cs-meta-bar reveal">
+      <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-value">Singapore Land Group</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Sector</span><span class="cs-meta-value">Commercial Real Estate</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Scope</span><span class="cs-meta-value">Scent Identity · Flagship Asset · Portfolio Framework</span></div>
+      <div class="cs-meta-item"><span class="cs-meta-label">Location</span><span class="cs-meta-value">Singapore CBD</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE BRIEF -->
+<section class="section-wrap" style="background: var(--cream);">
+  <div class="inner" style="max-width: var(--max-w); margin: 0 auto;">
+    <div class="cs-body-grid">
+      <div class="reveal">
+        <span class="s-label">The Brief</span>
+        <h2 class="s-title" style="margin-bottom: 28px;">Brand Equity,<br>Made Atmospheric</h2>
+        <p class="s-body" style="margin-bottom: 20px;">For Singapore Land Group's headquarters — housed within Singapore Land Tower in the city's Central Business District — we designed a distinctive sensory identity that reinforced brand equity across one of the portfolio's flagship assets.</p>
+        <p class="s-body">The arrival experience of a CBD tower sets the tone for everyone who enters: tenants, partners, investors. The brief was to translate that institutional weight into something felt the moment you cross the lobby threshold — quiet authority, expressed in scent.</p>
+      </div>
+      <div class="reveal rd1">
+        <div class="img-box" style="aspect-ratio: 4/5;">
+          <img loading="lazy" decoding="async" src="/images/case-studies/singapore-land-lobby.jpg" alt="Singapore Land Tower lobby" style="object-position: center;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE APPROACH -->
+<section class="section-wrap" style="background: var(--olive);">
+  <div class="inner" style="max-width: 820px; margin: 0 auto; text-align: center;">
+    <div class="reveal">
+      <span class="s-label" style="color: rgba(201,175,128,0.5);">The Approach</span>
+      <h2 class="s-title-lg" style="color: var(--cream); margin-bottom: 24px;">One Scent,<br>Built to Scale</h2>
+      <p class="s-body" style="color: rgba(237,233,223,0.55);">Rather than a one-off installation, we built a scalable scent framework — a signature engineered for consistency that could be rolled out across future portfolio-wide implementation. The flagship became the reference standard: a single olfactory identity that travels from one asset to the next without losing its character, calibrated each time to the volume, traffic, and architecture of the space it enters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section class="section-wrap quote-bg">
+  <div class="quote-inner reveal">
+    <blockquote>"For a portfolio brand, scent has to be repeatable without being generic. The flagship sets the signature; the framework carries it everywhere else."</blockquote>
+    <p class="quote-attr">Aaliyah Hamdoon · Founder, LA Scenting</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-wrap newsletter-bg">
+  <div style="max-width: 600px; margin: 0 auto; text-align: center;" class="reveal">
+    <span class="s-label" style="color: rgba(201,175,128,0.5);">Work with Us</span>
+    <h2 style="font-family: var(--font-head); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--cream); margin-bottom: 16px; line-height: 1.2;">A Portfolio Deserves<br>a Signature.</h2>
+    <p class="s-body" style="color: rgba(237,233,223,0.45); margin-bottom: 40px;">Tell us about your assets and we will design a scent framework that scales with them.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="/contact" class="btn btn-sand">Request a Consultation <span style="font-size:1.1em">→</span></a>
+      <a href="/case-studies" class="btn btn-ghost">All Case Studies <span style="font-size:1.1em">→</span></a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+<script src="/app.js" is:inline></script>
+</Base>

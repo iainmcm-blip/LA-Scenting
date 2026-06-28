@@ -4,6 +4,7 @@ const isActive = (href: string) =>
   path === href || path === href + '/' || path === href + '.html' ||
   (href === '/' && (path === '/index.html' || path === '/'));
 const inServices = path.startsWith('/services');
+const inCaseStudies = path.startsWith('/case-studies');
 ---
 
 <nav class="main-nav" transition:persist>
@@ -20,6 +21,7 @@ const inServices = path.startsWith('/services');
         <li><a href="/services/workshops" class:list={[{ active: isActive('/services/workshops') }]}>Workshops &amp; Events</a></li>
       </ul>
     </li>
+    <li><a href="/case-studies" class:list={[{ active: inCaseStudies }]}>Case Studies</a></li>
     <li><a href="/journal" class:list={[{ active: isActive('/journal') }]}>The Journal</a></li>
     <li><a href="https://motion-sensory-site.vercel.app/index.html" target="_blank" rel="noopener">Motion Sensory</a></li>
   </ul>
@@ -37,6 +39,7 @@ const inServices = path.startsWith('/services');
   <a href="/services">Services &amp; Products</a>
   <a href="/services/white-label" class="mobile-nav-sub">White Label</a>
   <a href="/services/workshops" class="mobile-nav-sub">Workshops &amp; Events</a>
+  <a href="/case-studies">Case Studies</a>
   <a href="/journal">The Journal</a>
   <a href="https://motion-sensory-site.vercel.app/index.html" target="_blank" rel="noopener">Motion Sensory</a>
   <a href="/contact">Contact Us</a>
