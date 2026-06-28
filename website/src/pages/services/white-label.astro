@@ -336,9 +336,10 @@ const collection = [
           if (idx === i) {
             p.classList.add('active');
             if (!reduce) {
+              // Match the Services pillar expand: 580ms, translateY(6px), same easing
               p.animate(
-                [{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }],
-                { duration: 460, easing: ease }
+                [{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }],
+                { duration: 580, easing: ease }
               );
             }
           } else {
