@@ -7,60 +7,70 @@ import PageHaze from '../../components/PageHaze.astro';
 const collection = [
   {
     num: '01', name: 'Scented Candle', lead: 'Handpoured soy & coconut wax vessels.',
+    img: '/images/white-label/candle.jpg',
     body: 'Handpoured in soy, coconut wax, or a premium blend. Available in glass, matte, or ceramic vessels — fully branded to your identity and occasion.',
     specs: ['Available in 50g, 100g, 150g, 250g & 300g', 'Single, double, or triple wick', 'Custom label or full vessel branding', 'Fragrance developed or matched to brief'],
     moq: 'From 500 units',
   },
   {
     num: '02', name: 'Reed Diffuser', lead: 'Long-release home fragrance, glass bottles.',
+    img: '/images/white-label/reed-diffuser.jpg',
     body: 'Continuous fragrance release for homes, hotels, and offices. Clean glass bottles with natural rattan or fibre reeds, and bespoke labelling across all components.',
     specs: ['Available in 100ml, 150ml & 250ml', 'Natural rattan or premium fibre reeds', 'Full label & box customisation', 'Alcohol-based or oil-based formulas'],
     moq: 'From 500 units',
   },
   {
     num: '03', name: 'Eau de Room Spritz', lead: 'Fine mist room fragrance, custom bottle.',
+    img: '/images/white-label/room-spritz.jpg',
     body: 'A fine mist room fragrance that delivers an instant sensory signature. Developed to your brief and presented in an elegant glass bottle with custom or label branding.',
     specs: ['Available in 30ml, 50ml & 100ml', 'Fine mist pump format', 'Custom or standard bottle options', 'Carton & cap customisation available'],
     moq: 'From 500 units',
   },
   {
     num: '04', name: 'Room Spray', lead: 'Instant ambient scenting for any space.',
+    img: '/images/white-label/room-spray.jpg',
     body: 'Instant, on-demand ambient fragrance for any environment. Elegant misted delivery in a format that works equally well across hotels, retail, and gifting.',
     specs: ['Available in 50ml, 100ml & 200ml', 'Pump or trigger spray options', 'Alcohol-free formulations available', 'Full-wrap or front-label branding'],
     moq: 'From 500 units',
   },
   {
     num: '05', name: 'Aroma Oil', lead: 'Pure & blended oils for diffusers.',
+    img: '/images/white-label/aroma-oil.jpg',
     body: 'Pure and blended fragrance oils, formulated for ultrasonic diffusers, passive diffusion, and professional scenting equipment.',
     specs: ['Available in 10ml, 30ml & 100ml', 'Water-soluble & neat oil formats', 'Compatible with standard diffuser units', 'Custom fragrance development included'],
     moq: 'From 500 units',
   },
   {
     num: '06', name: 'Car Diffuser', lead: 'Compact vent clip or card format.',
+    img: '/images/white-label/car-diffuser.jpg',
     body: 'Scent in motion. Premium vent-clip diffusers branded with your logo — ideal for automotive brands, hotel transfers, and premium corporate gifting.',
     specs: ['Vent clip or hanging card formats', 'Custom fragrance fill', 'Full-surface print branding', 'Ready to hang or clip — no setup required'],
     moq: 'From 5,000 units',
   },
   {
     num: '07', name: 'Pillow Mist', lead: 'Calming bedtime fragrance for linen.',
+    img: '/images/white-label/pillow-mist.jpg',
     body: 'A calming bedtime ritual in a bottle. Lightly spritzed onto pillows and linens, it creates an intimate, sleep-inducing sensory experience — ideal for hospitality amenity kits and wellness brands.',
     specs: ['Available in 50ml & 100ml', 'Alcohol-free or low-alcohol formulas', 'Custom label or full bottle branding', 'Calming & sleep-focused fragrance profiles'],
     moq: 'From 500 units',
   },
   {
     num: '08', name: 'Fragrance Stone', lead: 'Ceramic diffuser, passive long-lasting scent.',
+    img: '/images/white-label/fragrance-stone.jpg',
     body: 'A passive ceramic diffuser that releases fragrance gradually over weeks. Elegant, flameless, and effortless — suited to wardrobes, drawers, entryways, and hotel rooms.',
     specs: ['Ceramic or plaster disc formats', 'Custom embossed logo or printed tag', 'Ribbon, cord, or gift-box packaging', 'Fragrance developed or matched to brief'],
     moq: 'From 5,000 units',
   },
   {
     num: '09', name: '15ml Petit Spritz', lead: 'Pocket-sized personal fragrance spritz.',
+    img: '/images/white-label/petit-spritz.jpg',
     body: 'A pocket-sized personal fragrance spritz — perfect for gifting, travel retail, event favours, and branded amenity kits. Small format, maximum impact.',
     specs: ['15ml atomiser format', 'Refillable or sealed options', 'Custom label or sleeve branding', 'EDP, EDC, or room spritz fill'],
     moq: 'From 500 units',
   },
   {
     num: '10', name: 'Scented Pocket Sanitiser', lead: 'Hydrating scented hand sanitiser.',
+    img: '/images/white-label/sanitiser.jpg',
     body: 'A hydrating, fragranced hand sanitiser in a pocket-sized format — where personal care meets sensory experience. Ideal for branded gifting, events, hospitality amenity kits, and retail.',
     specs: ['30ml pocket mist format', 'Custom fragrance development', 'Full label or sleeve branding', 'Hydrating formula with fragrance'],
     moq: 'From 5,000 units',
@@ -74,8 +84,8 @@ const collection = [
   /* ── The Collection — index + showcase explorer ───────────── */
   .collection {
     display: grid;
-    grid-template-columns: 0.82fr 1.35fr;
-    gap: 64px;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 56px;
     align-items: start;
   }
   .collection-index {
@@ -135,18 +145,35 @@ const collection = [
   .ci-item.active .ci-num { opacity: 1; }
 
   .collection-stage { position: relative; min-height: 440px; }
-  .ci-panel { position: relative; }
+  .ci-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: 44px;
+    align-items: start;
+  }
   .collection.is-enhanced .ci-panel { display: none; }
-  .collection.is-enhanced .ci-panel.active { display: block; }
+  .collection.is-enhanced .ci-panel.active { display: grid; }
+  .ci-figure { position: relative; }
+  .ci-img-frame {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    background: var(--cream);
+    box-shadow: 0 20px 50px rgba(45,45,35,0.1);
+  }
+  .ci-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ci-content { padding-top: 6px; }
   .ci-ghost {
     position: absolute;
-    top: -28px; right: -8px;
+    top: -34px; left: -12px;
+    z-index: 2;
     font-family: var(--font-note);
     font-style: italic;
     font-weight: 300;
-    font-size: clamp(5rem, 11vw, 9rem);
-    color: var(--sand);
-    opacity: 0.14;
+    font-size: clamp(4.5rem, 8vw, 7rem);
+    color: var(--cream);
+    text-shadow: 0 2px 18px rgba(45,45,35,0.28);
     line-height: 0.8;
     pointer-events: none;
     user-select: none;
@@ -216,11 +243,16 @@ const collection = [
     line-height: 1;
   }
 
+  @media (max-width: 1024px) {
+    .ci-panel { grid-template-columns: 1fr; gap: 30px; }
+    .ci-figure { max-width: 400px; }
+  }
   @media (max-width: 860px) {
     .collection { grid-template-columns: 1fr; gap: 8px; }
     .collection-index { position: static; }
     .collection-stage { min-height: 0; margin-top: 8px; }
-    .ci-ghost { font-size: 5.5rem; top: -10px; }
+    .ci-figure { max-width: 340px; }
+    .ci-ghost { font-size: 4.5rem; top: -26px; }
   }
 </style>
 
@@ -270,17 +302,24 @@ const collection = [
       <div class="collection-stage">
         {collection.map((c, i) => (
           <article class={`ci-panel${i === 0 ? ' active' : ''}`} role="tabpanel" data-i={i} aria-label={c.name}>
-            <span class="ci-ghost" aria-hidden="true">{c.num}</span>
-            <span class="s-label">Format {c.num}</span>
-            <h3 class="ci-panel-name">{c.name}</h3>
-            <p class="ci-lead">{c.lead}</p>
-            <p class="s-body ci-desc">{c.body}</p>
-            <ul class="ci-specs">
-              {c.specs.map((s) => (<li>{s}</li>))}
-            </ul>
-            <div class="ci-moq">
-              <span class="ci-moq-label">Minimum Order</span>
-              <span class="ci-moq-val">{c.moq}</span>
+            <div class="ci-figure">
+              <span class="ci-ghost" aria-hidden="true">{c.num}</span>
+              <div class="ci-img-frame">
+                <img class="ci-img" src={c.img} alt={`${c.name} — white label format`} loading="lazy" decoding="async" />
+              </div>
+            </div>
+            <div class="ci-content">
+              <span class="s-label">Format {c.num}</span>
+              <h3 class="ci-panel-name">{c.name}</h3>
+              <p class="ci-lead">{c.lead}</p>
+              <p class="s-body ci-desc">{c.body}</p>
+              <ul class="ci-specs">
+                {c.specs.map((s) => (<li>{s}</li>))}
+              </ul>
+              <div class="ci-moq">
+                <span class="ci-moq-label">Minimum Order</span>
+                <span class="ci-moq-val">{c.moq}</span>
+              </div>
             </div>
           </article>
         ))}
