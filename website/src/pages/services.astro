@@ -173,7 +173,7 @@ const pillars = [
   .pillar-chev::before { top: 7px; left: 0; width: 16px; height: 2px; }
   .pillar-chev::after { top: 0; left: 7px; width: 2px; height: 16px; }
   .pillar[open] .pillar-chev::after { opacity: 0; transform: scaleY(0); }
-  .pillar-body { padding: 0 0 44px 248px; max-width: 920px; }
+  .pillar-body { padding: 0 0 44px 248px; max-width: 920px; overflow: hidden; }
   .pillar-meta {
     display: flex;
     flex-wrap: wrap;
@@ -434,5 +434,66 @@ const pillars = [
 </section>
 
 <Footer />
+
+<script is:inline>
+  (function () {
+    // Smoothly animate the six-pillar <details> open/close, in the
+    // site's easing — instead of the native instant snap.
+    function setupPillars() {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+      document.querySelectorAll('.pillar').forEach(function (d) {
+        if (d.dataset.animBound) return;
+        d.dataset.animBound = '1';
+        var summary = d.querySelector('summary');
+        var body = d.querySelector('.pillar-body');
+        if (!summary || !body) return;
+        var animating = false;
+        summary.addEventListener('click', function (e) {
+          if (reduce) return; // honour reduced-motion: native toggle
+          e.preventDefault();
+          if (animating) return;
+          animating = true;
+          if (d.open) {
+            var startH = body.offsetHeight;
+            var closing = body.animate(
+              [
+                { height: startH + 'px', opacity: 1 },
+                { height: '0px', opacity: 0 }
+              ],
+              { duration: 440, easing: ease }
+            );
+            closing.onfinish = closing.oncancel = function () {
+              d.open = false;
+              body.style.height = '';
+              body.style.opacity = '';
+              animating = false;
+            };
+          } else {
+            d.open = true;
+            var endH = body.offsetHeight;
+            var opening = body.animate(
+              [
+                { height: '0px', opacity: 0, transform: 'translateY(6px)' },
+                { height: endH + 'px', opacity: 1, transform: 'translateY(0)' }
+              ],
+              { duration: 580, easing: ease }
+            );
+            opening.onfinish = opening.oncancel = function () {
+              body.style.height = '';
+              body.style.opacity = '';
+              body.style.transform = '';
+              animating = false;
+            };
+          }
+        });
+      });
+    }
+    document.addEventListener('astro:page-load', setupPillars);
+    if (document.readyState !== 'loading') setupPillars();
+    else document.addEventListener('DOMContentLoaded', setupPillars);
+  })();
+</script>
+
 <script src="/app.js" is:inline></script>
 </Base>
