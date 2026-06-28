@@ -117,7 +117,7 @@ import Footer from '../components/Footer.astro';
     </div>
     <div style="display: flex; flex-direction: column; justify-content: flex-end; padding: 72px 64px;">
       <span class="s-label" style="color: rgba(201,175,128,0.5); margin-bottom: 8px;">Featured Story</span>
-      <p style="font-family: var(--font-note); font-style: italic; font-size: 0.9rem; color: rgba(201,175,128,0.5); margin-bottom: 16px;">Sensory Tech · Long Read</p>
+      <p style="font-family: var(--font-note); font-style: italic; font-size: 0.9rem; color: rgba(201,175,128,0.5); margin-bottom: 16px;">Philosophy and Science · Long Read</p>
       <h1 style="font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--cream); line-height: 1.1; margin-bottom: 20px;">The Psychology of Olfactory Branding</h1>
       <p class="s-body" style="color: rgba(237,233,223,0.5); max-width: 400px; margin-bottom: 32px;">How scent architecture reshapes memory, emotion, and commercial engagement within high-end environments.</p>
       <a href="#" class="btn-link sand">Read Article <span>→</span></a>
@@ -136,64 +136,64 @@ import Footer from '../components/Footer.astro';
     <!-- Filter bar -->
     <div class="filter-bar reveal">
       <button class="filter-btn active" onclick="filterArticles(this, 'all')">All Insights</button>
-      <button class="filter-btn" onclick="filterArticles(this, 'sensory')">Sensory Tech</button>
-      <button class="filter-btn" onclick="filterArticles(this, 'architecture')">Architecture</button>
-      <button class="filter-btn" onclick="filterArticles(this, 'hospitality')">Hospitality</button>
-      <button class="filter-btn" onclick="filterArticles(this, 'artistry')">Artistry</button>
+      <button class="filter-btn" onclick="filterArticles(this, 'philosophy')">Philosophy and Science</button>
+      <button class="filter-btn" onclick="filterArticles(this, 'inside')">Inside LA Scenting</button>
+      <button class="filter-btn" onclick="filterArticles(this, 'projects')">Projects</button>
+      <button class="filter-btn" onclick="filterArticles(this, 'workshops')">Workshops &amp; Craft</button>
     </div>
 
     <!-- Article grid -->
     <div class="article-grid">
-      <a class="article-card reveal" href="#" data-cat="architecture">
+      <a class="article-card reveal" href="#" data-cat="philosophy">
         <div class="ac-img img-box">
           <img loading="lazy" decoding="async" src="/images/marble.jpg" alt="Engineering Invisible Architecture">
         </div>
-        <p class="ac-cat">Architecture · 12 Min Read</p>
+        <p class="ac-cat">Philosophy and Science · 12 Min Read</p>
         <p class="ac-title">Engineering Invisible Architecture</p>
         <p class="ac-excerpt">The integration of HVAC-native diffusion systems into contemporary skyscrapers requires a delicate balance between mechanical precision and sensory poetry.</p>
       </a>
 
-      <a class="article-card reveal rd1" href="#" data-cat="hospitality">
+      <a class="article-card reveal rd1" href="#" data-cat="projects">
         <div class="ac-img img-box">
           <img loading="lazy" decoding="async" src="/images/dining.jpg" alt="Luxury Guest Experiences">
         </div>
-        <p class="ac-cat">Hospitality</p>
+        <p class="ac-cat">Projects</p>
         <p class="ac-title">The New Standard of Luxury Guest Experiences</p>
         <p class="ac-excerpt">How the world's leading hotel brands are using olfactory identity to command emotional loyalty — and why the future of luxury is largely invisible.</p>
       </a>
 
-      <a class="article-card reveal rd2" href="#" data-cat="artistry">
+      <a class="article-card reveal rd2" href="#" data-cat="inside">
         <div class="ac-img img-box">
           <img loading="lazy" decoding="async" src="/images/incense.jpg" alt="Scent as Sculpture">
         </div>
-        <p class="ac-cat">Artistry</p>
+        <p class="ac-cat">Inside LA Scenting</p>
         <p class="ac-title">Scent as Sculpture: The Aesthetics of Diffusion</p>
         <p class="ac-excerpt">When the diffuser is itself a work of art, the distinction between hardware and sculpture dissolves entirely. A conversation with our design team.</p>
       </a>
 
-      <a class="article-card reveal" href="#" data-cat="hospitality">
+      <a class="article-card reveal" href="#" data-cat="projects">
         <div class="ac-img img-box">
           <img loading="lazy" decoding="async" src="/images/living.jpg" alt="Residential Olfactive Curation">
         </div>
-        <p class="ac-cat">Architecture</p>
+        <p class="ac-cat">Projects</p>
         <p class="ac-title">Residential Olfactive Curation</p>
         <p class="ac-excerpt">Designing private sanctuaries through personalised scent layering and atmospheric zones — where the home becomes a sensory retreat.</p>
       </a>
 
-      <a class="article-card reveal rd1" href="#" data-cat="sensory">
+      <a class="article-card reveal rd1" href="#" data-cat="philosophy">
         <div class="ac-img img-box">
           <img loading="lazy" decoding="async" src="/images/vials.jpg" alt="The Science of Diffusion">
         </div>
-        <p class="ac-cat">Sensory Tech</p>
+        <p class="ac-cat">Philosophy and Science</p>
         <p class="ac-title">The Science of Diffusion</p>
         <p class="ac-excerpt">Understanding cold-air nebulisation and its impact on essential oil integrity — why temperature matters at the molecular level.</p>
       </a>
 
-      <a class="article-card reveal rd2" href="#" data-cat="artistry">
+      <a class="article-card reveal rd2" href="#" data-cat="workshops">
         <div class="ac-img img-box">
           <img loading="lazy" decoding="async" src="/images/lavender.jpg" alt="Botanical Sourcing Ethics">
         </div>
-        <p class="ac-cat">Artistry · Sustainability</p>
+        <p class="ac-cat">Workshops &amp; Craft</p>
         <p class="ac-title">Botanical Sourcing Ethics</p>
         <p class="ac-excerpt">A journey from the heart of the Grasse region to our global partner estates — and what responsible luxury means when it comes to raw materials.</p>
       </a>
